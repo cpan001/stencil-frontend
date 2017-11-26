@@ -8,3 +8,10 @@ export function fetchDesigns() {
       });
   };
 }
+
+export function addLike(userId, designId) {
+  return { type: "ADD_LIKE", payload: { userId, designId } };
+}
+export function minusLike(userId, designId) {
+  return { type: "MINUS_LIKE", payload: { userId, designId } };
+}
