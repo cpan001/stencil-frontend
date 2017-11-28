@@ -25,7 +25,9 @@ class DesignCard extends React.Component {
     const designId = this.props.designId;
     console.log(
       "in design card check like props,",
-      this.props.design.likes.some(like => like.liker_id == this.props.userId)
+      this.props.design.likes.some(
+        like => like.liker_id === parseInt(this.props.userId)
+      )
     );
     return (
       <div className="card-modal">
@@ -37,8 +39,9 @@ class DesignCard extends React.Component {
                 src={this.props.design.creator.avatar}
                 width="100px"
                 height="100px"
+                alt=""
               />
-              {this.props.design.title} By {this.props.design.creator.name}
+              {this.props.design.title}
             </li>
             <li>
               <ImageCarousel
@@ -49,12 +52,11 @@ class DesignCard extends React.Component {
             <li>Description: {this.props.design.description}</li>
             <li>Link: {this.props.design.url}</li>
             <li>Code: {this.props.design.code}</li>
-            <li>{this.props.design.views} Views</li>
             <LikeButton
               likes={this.props.likes.length}
               onLikeButtonClick={this.handleLikeButtonClick}
               clicked={this.props.design.likes.some(
-                like => like.liker_id == this.props.userId
+                like => like.liker_id === parseInt(this.props.userId)
               )}
             />
             <li>

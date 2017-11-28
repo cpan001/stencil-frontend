@@ -19,7 +19,17 @@ export default class DesignContainer extends React.Component {
               );
             }}
           />
-          <Route path="/designs" component={DesignBrowser} />
+          <Route
+            path="/designs"
+            render={props => {
+              return (
+                <DesignBrowser
+                  {...props}
+                  userId={localStorage.getItem("user_id")}
+                />
+              );
+            }}
+          />
         </Switch>
       </div>
     );

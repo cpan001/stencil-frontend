@@ -11,7 +11,8 @@ function designs(state = { isFetching: false, designs: {} }, action) {
       }, {});
       return Object.assign({}, state, { isFetching: false }, { designs });
     case "ADD_DESIGN":
-      return state;
+      let newDesigns = { [uuid()]: action.payload, ...state.designs };
+      return Object.assign({}, state, { designs: newDesigns });
     case "ADD_LIKE":
       let allDesigns = { ...state.designs };
       let design = allDesigns[action.payload.designId];

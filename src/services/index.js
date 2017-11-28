@@ -56,6 +56,14 @@ export function minusLikeAPI(userId, designId, likeId) {
   );
 }
 
+export function addDesignAPI(postData, userId) {
+  return post(`${baseURL}/users/${userId}/designs`, postData);
+}
+
+// export function getUserInfo(userId) {
+//   return get(`${baseURL}/users/${userId}`);
+// }
+
 export function login(postData) {
   return post(`${baseURL}/signin`, postData);
 }

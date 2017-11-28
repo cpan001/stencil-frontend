@@ -28,7 +28,10 @@ export default class ImageCarousel extends React.Component {
         width="200px"
         height="200px"
         key={image.id}
-        style={{ display: this.state.slideIndex - 1 == idx ? "block" : "none" }}
+        alt=""
+        style={{
+          display: this.state.slideIndex - 1 === idx ? "block" : "none"
+        }}
       />
     ));
     return (

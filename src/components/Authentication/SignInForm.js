@@ -14,6 +14,9 @@ export default class SignInForm extends React.Component {
         break;
       case "password":
         this.setState({ password: value });
+        break;
+      default:
+        break;
     }
   };
 

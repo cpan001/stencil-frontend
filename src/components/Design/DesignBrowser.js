@@ -2,22 +2,40 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchDesigns } from "../../actions/designs";
-import DesignCard from "./DesignCard";
 import DesignCardDisplay from "./DesignCardDisplay";
 import DesignForm from "./DesignForm";
+import SearchForm from "../FormComponents/SearchForm";
 
 class DesignBrowser extends React.Component {
+  state = {
+    searchTerm: ""
+  };
   componentDidMount() {
-    const designs = this.props.fetchDesigns();
+    this.props.fetchDesigns();
   }
+
+  handleSearchChange = searchTerm => {
+    this.setState({ searchTerm: searchTerm });
+  };
   render() {
     console.log("hit design browser", this.props.designs);
+    const regex = new RegExp(this.state.searchTerm, "i");
+
+    const showDesigns = this.props.designs.filter(
+      design =>
+        design.title.match(regex) ||
+        design.tags.some(tag => tag.text.match(regex))
+    );
     return (
       <div>
-        {this.props.designs.map(design => (
+        <SearchForm
+          searchTerm={this.state.searchTerm}
+          onSearchChange={this.handleSearchChange}
+        />
+        {showDesigns.map(design => (
           <DesignCardDisplay {...design} key={design.id} />
         ))}
-        <DesignForm />
+        <DesignForm userId={this.props.userId} />
       </div>
     );
   }

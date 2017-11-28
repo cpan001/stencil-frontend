@@ -1,9 +1,5 @@
 import React from "react";
-import DesignCard from "./DesignCard";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { currentDesign } from "../../actions/designs";
 
 export default class DesignCardDisplay extends React.Component {
   render() {
@@ -21,9 +17,7 @@ export default class DesignCardDisplay extends React.Component {
               className="card-modal-button design"
             />
           </Link>
-          <p>
-            {this.props.title} by {this.props.creator.name}
-          </p>
+          <p>{this.props.title}</p>
         </div>
         <div className="empty-container" />
       </div>

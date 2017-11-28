@@ -15,3 +15,7 @@ export function addLike(userId, designId) {
 export function minusLike(userId, designId) {
   return { type: "MINUS_LIKE", payload: { userId, designId } };
 }
+
+export function addDesign(design) {
+  return { type: "ADD_DESIGN", payload: design };
+}

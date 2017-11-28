@@ -7,6 +7,8 @@ import SignInForm from "./components/Authentication/SignInForm";
 import NavBar from "./components/NavBar";
 import DesignContainer from "./components/Design/DesignContainer";
 import { login } from "./services";
+import ProjectContainer from "./components/Project/ProjectContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 class App extends Component {
   state = {};
@@ -24,7 +26,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <NavBar userId={localStorage.getItem("user_id")} />
         <Route exact path="/" component={Home} />
         <Route path="/signup" component={SignUpForm} />
         <Route
@@ -41,6 +43,24 @@ class App extends Component {
           path="/designs"
           render={props => (
             <DesignContainer
+              {...props}
+              userId={localStorage.getItem("user_id")}
+            />
+          )}
+        />
+        <Route
+          path="/projects"
+          render={props => (
+            <ProjectContainer
+              {...props}
+              userId={localStorage.getItem("user_id")}
+            />
+          )}
+        />
+        <Route
+          path="/users/:user_id"
+          render={props => (
+            <ProfileContainer
               {...props}
               userId={localStorage.getItem("user_id")}
             />

@@ -1,7 +1,6 @@
 import React from "react";
 import CommentForm from "./CommentForm";
 import CommentBrowser from "./CommentBrowser";
-import { connect } from "react-redux";
 
 export default class CommentsContainer extends React.Component {
   state = {
