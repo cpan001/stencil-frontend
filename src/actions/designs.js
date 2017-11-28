@@ -19,3 +19,13 @@ export function minusLike(userId, designId) {
 export function addDesign(design) {
   return { type: "ADD_DESIGN", payload: design };
 }
+
+export function fetchDesign(designId) {
+  return dispatch => {
+    return fetch(`http://localhost:3000/api/v1/designs/${designId}`)
+      .then(resp => resp.json())
+      .then(design => {
+        dispatch({ type: "FETCHED_DESIGN", payload: design });
+      });
+  };
+}

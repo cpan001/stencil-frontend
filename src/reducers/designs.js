@@ -10,6 +10,10 @@ function designs(state = { isFetching: false, designs: {} }, action) {
         return acc;
       }, {});
       return Object.assign({}, state, { isFetching: false }, { designs });
+    case "FETCHED_DESIGN":
+      let updatedDesigns = { ...state.designs };
+      updatedDesigns[action.payload.id] = action.payload;
+      return Object.assign({}, state, { designs: updatedDesigns });
     case "ADD_DESIGN":
       let newDesigns = { [uuid()]: action.payload, ...state.designs };
       return Object.assign({}, state, { designs: newDesigns });

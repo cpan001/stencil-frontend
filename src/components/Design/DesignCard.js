@@ -6,10 +6,15 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import LikeButton from "../FormComponents/LikeButton";
 import { bindActionCreators } from "redux";
-import { addLike, minusLike } from "../../actions/designs";
+import { addLike, minusLike, fetchDesign } from "../../actions/designs";
 import { addLikeAPI, minusLikeAPI } from "../../services/index";
 
 class DesignCard extends React.Component {
+  componentDidMount() {
+    this.props.fetchDesign(this.props.designId);
+    console.log("hit componentDidMount THIS ONE");
+  }
+
   handleLikeButtonClick = clicked => {
     const userId = this.props.userId;
     const designId = this.props.designId;
@@ -23,54 +28,53 @@ class DesignCard extends React.Component {
   };
   render() {
     const designId = this.props.designId;
-    console.log(
-      "in design card check like props,",
-      this.props.design.likes.some(
-        like => like.liker_id === parseInt(this.props.userId)
-      )
-    );
+    const designCheck = this.props.design;
+    console.log(designCheck, "design check");
+    const showDesign = this.props.design ? (
+      <ul>
+        <li>
+          <img
+            src={this.props.design.creator.avatar}
+            width="100px"
+            height="100px"
+            alt=""
+          />
+          {this.props.design.title}
+        </li>
+        <li>
+          <ImageCarousel
+            images={this.props.design.images}
+            number={this.props.design.images.length}
+          />
+        </li>
+        <li>Description: {this.props.design.description}</li>
+        <li>Link: {this.props.design.url}</li>
+        <li>Code: {this.props.design.code}</li>
+        <LikeButton
+          likes={this.props.likes.length}
+          onLikeButtonClick={this.handleLikeButtonClick}
+          clicked={this.props.design.likes.some(
+            like => like.liker_id === parseInt(this.props.userId)
+          )}
+        />
+        <li>
+          Tags:{" "}
+          {this.props.design.tags.map(tag => (
+            <Tag text={tag.text} key={tag.id} />
+          ))}
+        </li>
+        <CommentsContainer
+          designId={designId}
+          userId={this.props.userId}
+          commentsLength={this.props.design.comments.length}
+        />
+      </ul>
+    ) : null;
     return (
       <div className="card-modal">
         <div className="modal-content design">
           <Link to="/designs">&times;</Link>
-          <ul>
-            <li>
-              <img
-                src={this.props.design.creator.avatar}
-                width="100px"
-                height="100px"
-                alt=""
-              />
-              {this.props.design.title}
-            </li>
-            <li>
-              <ImageCarousel
-                images={this.props.design.images}
-                number={this.props.design.images.length}
-              />
-            </li>
-            <li>Description: {this.props.design.description}</li>
-            <li>Link: {this.props.design.url}</li>
-            <li>Code: {this.props.design.code}</li>
-            <LikeButton
-              likes={this.props.likes.length}
-              onLikeButtonClick={this.handleLikeButtonClick}
-              clicked={this.props.design.likes.some(
-                like => like.liker_id === parseInt(this.props.userId)
-              )}
-            />
-            <li>
-              Tags:{" "}
-              {this.props.design.tags.map(tag => (
-                <Tag text={tag.text} key={tag.id} />
-              ))}
-            </li>
-            <CommentsContainer
-              designId={designId}
-              userId={this.props.userId}
-              commentsLength={this.props.design.comments.length}
-            />
-          </ul>
+          {showDesign}
         </div>
       </div>
     );
@@ -79,11 +83,16 @@ class DesignCard extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   const design = state.designs.designs[ownProps.designId];
-  return { design, likes: design.likes };
+  console.log("in mstp");
+  if (design && design["likes"]) {
+    return { design, likes: design.likes };
+  } else {
+    return { design: null, likes: null };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addLike, minusLike }, dispatch);
+  return bindActionCreators({ addLike, minusLike, fetchDesign }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DesignCard);
