@@ -60,6 +60,14 @@ export function addDesignAPI(postData, userId) {
   return post(`${baseURL}/users/${userId}/designs`, postData);
 }
 
+export function createRelationship(userId, postData) {
+  return post(`${baseURL}/users/${userId}/relationships`, postData);
+}
+
+export function deleteRelationship(userId, currentUserId) {
+  return destroy(`${baseURL}/users/${userId}/relationships/${currentUserId}`);
+}
+
 // export function getUserInfo(userId) {
 //   return get(`${baseURL}/users/${userId}`);
 // }

@@ -21,7 +21,9 @@ export default class NavBar extends React.Component {
         <NavLink to="/projects" style={style}>
           Projects
         </NavLink>
-        <NavLink to={`/users/${this.props.userId}`}>My Profile</NavLink>
+        <NavLink to={`/users/${localStorage.getItem("user_id")}`}>
+          My Profile
+        </NavLink>
       </div>
     );
   }

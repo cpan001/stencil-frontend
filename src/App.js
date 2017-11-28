@@ -59,12 +59,7 @@ class App extends Component {
         />
         <Route
           path="/users/:user_id"
-          render={props => (
-            <ProfileContainer
-              {...props}
-              userId={localStorage.getItem("user_id")}
-            />
-          )}
+          render={props => <ProfileContainer {...props} />}
         />
       </div>
     );

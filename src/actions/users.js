@@ -5,3 +5,11 @@ export function fetchUser(userId) {
       .then(user => dispatch({ type: "FETCHED_USER", payload: user }));
   };
 }
+
+export function addFollower(currentUser) {
+  return { type: "ADD_FOLLOWER", payload: currentUser };
+}
+
+export function deleteFollower(currentUser) {
+  return { type: "DELETE_FOLLOWER", payload: currentUser };
+}
