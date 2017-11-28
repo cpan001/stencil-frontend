@@ -47,7 +47,7 @@ class ProfileContainer extends React.Component {
             path="/users/:user_id"
             render={props => {
               return (
-                <DesignList {...props} designs={this.props.user.designs} />
+                <DesignList {...props} designs={this.props.user.likeddesigns} />
               );
             }}
           />
