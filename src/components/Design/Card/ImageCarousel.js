@@ -25,8 +25,6 @@ export default class ImageCarousel extends React.Component {
       <img
         className="design-images"
         src={image.filename}
-        width="200px"
-        height="200px"
         key={image.id}
         alt=""
         style={{
@@ -36,13 +34,13 @@ export default class ImageCarousel extends React.Component {
     ));
     return (
       <div className="image-carousel">
-        {images}
-        <button type="button" onClick={this.handleMinusIndex}>
-          &#10094;
-        </button>
-        <button type="button" onClick={this.handleAddIndex}>
-          &#10095;
-        </button>
+        {images}{" "}
+        <div onClick={this.handleMinusIndex} className="left-image-click">
+          <i class="material-icons">keyboard_arrow_left</i>
+        </div>
+        <div onClick={this.handleAddIndex} className="right-image-click">
+          <i class="material-icons">keyboard_arrow_right</i>
+        </div>
       </div>
     );
   }

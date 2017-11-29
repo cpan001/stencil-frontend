@@ -34,7 +34,7 @@ body {
   margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 75%;
   border-radius: 8px;
 }
 
@@ -221,6 +221,114 @@ body {
 /*Large Design Card*/
 
 .design-card-main {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 60px;
+}
+
+.card-modal > a {
+  text-decoration: none;
+  color: #9a9a9a;
+  font-size: 45px;
+  float: right;
+  margin-right: 15px;
+}
+
+/*first section*/
+.design-title-area {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.user-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.design-title {
+  flex: 8;
+  display: flex;
+  flex-direction: column;
+}
+
+.design-title p:first-child {
+  font-weight: bold;
+  color: #444444;
+  text-transform: capitalize;
+  text-align: left;
+  margin-bottom: 2px;
+  font-size: 20px;
+}
+
+.design-title p:last-child {
+  color: #999a9f;
+  text-transform: capitalize;
+  text-align: left;
+  margin-top: 0px;
+  font-size: 14px;
+}
+
+.profile-image {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+
+/*second section*/
+.design-images-actions {
+  flex: 3;
+  display: flex;
+  flex-direction: row;
+}
+
+.image-carousel {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.image-carousel img {
+  height: 350px;
+  width: 500px;
+  border-radius: 4px;
+}
+
+.image-nav-buttons {
+  color: black;
+}
+
+.left-image-click {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(25px, 0);
+  cursor: pointer;
+}
+
+.image-carousel i {
+  font-size: 40px;
+  font-weight: bold;
+}
+.right-image-click {
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translate(-25px, 0);
+  cursor: pointer;
+}
+
+.design-actions {
+  flex: 2;
+}
+
+/*third section*/
+.last-design-section {
+  flex: 3;
   display: flex;
   flex-direction: column;
 }
