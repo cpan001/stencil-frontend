@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 
 export default class DesignContainer extends React.Component {
   render() {
+    console.log("hit design container");
     return (
       <div>
         <Switch>

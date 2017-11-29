@@ -28,7 +28,7 @@ class FollowershipButton extends React.Component {
   render() {
     const currentUserId = localStorage.getItem("user_id");
     const following = this.props.followers
-      ? this.props.followers.some(f => f.id === parseInt(currentUserId))
+      ? this.props.followers.some(f => f.id === parseInt(currentUserId, 10))
       : null;
     const value = following || this.state.following ? "following" : "follow";
     return <input type="button" value={value} onClick={this.handleClick} />;

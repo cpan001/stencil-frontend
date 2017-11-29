@@ -1,9 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { fetchUser } from "../../actions/users";
 import RelationshipsButton from "./RelationshipsButton";
-import DesignCardDisplay from "../Design/DesignCardDisplay";
 import FollowershipButton from "./FollowershipButton";
 
 export default class ProfileInfo extends React.Component {

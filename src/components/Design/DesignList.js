@@ -8,7 +8,7 @@ function DesignList(props) {
         <DesignCardDisplay {...design} key={design.id} />
       ))
     : null;
-  return <div>{designCards}</div>;
+  return <div className="design-list">{designCards}</div>;
 }
 
 export default DesignList;

@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import Home from "./components/Home/HomeContainer";
 import SignUpForm from "./components/Authentication/SignUpForm";
 import SignInForm from "./components/Authentication/SignInForm";
-import NavBar from "./components/NavBar";
 import DesignContainer from "./components/Design/DesignContainer";
 import { login } from "./services";
 import ProjectContainer from "./components/Project/ProjectContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import NavBar from "./components/NavBar/NavBar";
+import DesignForm from "./components/Design/DesignForm";
 
 class App extends Component {
   state = {};
@@ -26,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar userId={localStorage.getItem("user_id")} />
+        <NavBar />
         <Route exact path="/" component={Home} />
         <Route path="/signup" component={SignUpForm} />
         <Route
@@ -39,28 +40,37 @@ class App extends Component {
             );
           }}
         />
-        <Route
-          path="/designs"
-          render={props => (
-            <DesignContainer
-              {...props}
-              userId={localStorage.getItem("user_id")}
-            />
-          )}
-        />
-        <Route
-          path="/projects"
-          render={props => (
-            <ProjectContainer
-              {...props}
-              userId={localStorage.getItem("user_id")}
-            />
-          )}
-        />
-        <Route
-          path="/users/:user_id"
-          render={props => <ProfileContainer {...props} />}
-        />
+        <Switch>
+          <Route
+            exact
+            path="/designs/new"
+            render={props => (
+              <DesignForm {...props} userId={localStorage.getItem("user_id")} />
+            )}
+          />
+          <Route
+            path="/designs"
+            render={props => (
+              <DesignContainer
+                {...props}
+                userId={localStorage.getItem("user_id")}
+              />
+            )}
+          />
+          <Route
+            path="/projects"
+            render={props => (
+              <ProjectContainer
+                {...props}
+                userId={localStorage.getItem("user_id")}
+              />
+            )}
+          />
+          <Route
+            path="/users/:user_id"
+            render={props => <ProfileContainer {...props} />}
+          />
+        </Switch>
       </div>
     );
   }

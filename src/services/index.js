@@ -7,11 +7,11 @@ function post(url, postData) {
   }).then(res => res.json());
 }
 
-function get(url) {
-  return fetch(url, {
-    headers: { Accept: "application/json", "Content-Type": "application/json" }
-  }).then(res => res.json());
-}
+// function get(url) {
+//   return fetch(url, {
+//     headers: { Accept: "application/json", "Content-Type": "application/json" }
+//   }).then(res => res.json());
+// }
 
 function patch(url, postData) {
   return fetch(url, {

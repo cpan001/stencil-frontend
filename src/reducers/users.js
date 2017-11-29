@@ -1,5 +1,3 @@
-import uuid from "uuid";
-
 export default function users(state = { user: null }, action) {
   switch (action.type) {
     case "FETCHED_USER":
@@ -12,7 +10,7 @@ export default function users(state = { user: null }, action) {
     case "DELETE_FOLLOWER":
       const updateUser = { ...state.user };
       updateUser["followers"] = updateUser["followers"].filter(
-        fol => fol.id === parseInt(action.payload.id)
+        fol => fol.id === parseInt(action.payload.id, 10)
       );
       return Object.assign({}, state, { user: updateUser });
     default:

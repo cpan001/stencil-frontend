@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #fafafa;
 }
 
 /*Design Card Modal*/
@@ -16,7 +17,7 @@ body {
   height: 100%;
   overflow: auto;
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(30, 30, 30, 0.85);
 }
 
 .card-modal.form {
@@ -29,11 +30,12 @@ body {
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
+  background-color: #fafafa;
+  margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  border-radius: 8px;
 }
 
 /* The Close Button */
@@ -62,4 +64,163 @@ body {
 
 .like-clicked {
   color: red;
+}
+
+/*HomeNavBar*/
+
+.logo {
+  height: 30px;
+  width: 98px;
+}
+
+.navbar {
+  height: 77px;
+  background-color: #fff;
+  padding-left: 0 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.navbar .link {
+  float: left;
+}
+
+.navbar .right {
+  float: right;
+}
+
+.navbar a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+}
+
+.navbar-icons {
+  font-size: 28px;
+  color: #272727;
+}
+
+/*Design Cards Display*/
+.design-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card-image-background {
+  height: 170px;
+  width: 220px;
+  border: 10px solid #fff;
+  outline: 0.5px solid #e6e6e6;
+  border-radius: 12px;
+  position: relative;
+  box-sizing: content-box;
+  margin: 15px 20px;
+}
+
+.card-modal-button {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 3px;
+}
+
+.image-text {
+  height: 100%;
+  width: 100%;
+  display: inline;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  background-color: #232222;
+  color: #fafafa;
+  transition: 0.5s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image-background:hover .image-text {
+  opacity: 0.75;
+}
+
+.image-title {
+  flex: 1;
+  color: #f9f9f9;
+  font-weight: bold;
+  text-transform: capitalize;
+  text-align: left;
+  padding: 15px 15px 0px 15px;
+  z-index: 12;
+}
+
+.image-description {
+  flex: 6;
+  color: #f9f9f9;
+  text-transform: capitalize;
+  text-align: left;
+  padding: 10px 15px;
+  z-index: 12;
+}
+
+/*Main Flex*/
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+}
+
+.empty-container {
+  flex: 0.3;
+}
+
+.content-container {
+  flex: 3;
+}
+
+.design-browers {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form {
+  flex: 1;
+  background-color: #fff;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.searchBox {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #efefef;
+  font-size: 16px;
+  background-image: url("./images/Search.png");
+  background-position: 10px 10px;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  margin: 12px 0;
+  background-color: #efefef;
+  color: #555;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.searchBox::-webkit-input-placeholder {
+  color: #a39a99;
+}
+
+/*Large Design Card*/
+
+.design-card-main {
+  display: flex;
+  flex-direction: column;
 }

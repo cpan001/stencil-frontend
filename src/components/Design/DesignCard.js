@@ -29,46 +29,53 @@ class DesignCard extends React.Component {
   render() {
     const designId = this.props.designId;
     const designCheck = this.props.design;
-    console.log(designCheck, "design check");
     const showDesign = this.props.design ? (
-      <ul>
-        <li>
+      <div className="design-card-main">
+        <div className="design-title-area">
+          {/* <ProfileImage /> */}
           <img
             src={this.props.design.creator.avatar}
             width="100px"
             height="100px"
             alt=""
           />
-          {this.props.design.title}
-        </li>
-        <li>
+          <p>{this.props.design.title}</p>
+          <p>By {this.props.design.creator.name}</p>
+        </div>
+        <div className="design-images-actions">
           <ImageCarousel
             images={this.props.design.images}
             number={this.props.design.images.length}
           />
-        </li>
-        <li>Description: {this.props.design.description}</li>
-        <li>Link: {this.props.design.url}</li>
-        <li>Code: {this.props.design.code}</li>
-        <LikeButton
-          likes={this.props.likes.length}
-          onLikeButtonClick={this.handleLikeButtonClick}
-          clicked={this.props.design.likes.some(
-            like => like.liker_id === parseInt(this.props.userId)
-          )}
-        />
-        <li>
-          Tags:{" "}
-          {this.props.design.tags.map(tag => (
-            <Tag text={tag.text} key={tag.id} />
-          ))}
-        </li>
-        <CommentsContainer
-          designId={designId}
-          userId={this.props.userId}
-          commentsLength={this.props.design.comments.length}
-        />
-      </ul>
+          <LikeButton
+            likes={this.props.likes.length}
+            onLikeButtonClick={this.handleLikeButtonClick}
+            clicked={this.props.design.likes.some(
+              like => like.liker_id === parseInt(this.props.userId, 10)
+            )}
+          />
+          <a href={this.props.design.url} target="_blank">
+            Site Link
+          </a>
+          <a href={this.props.design.code} target="_blank">
+            Code Link
+          </a>
+        </div>
+        <div className="last-design-section">
+          <p>Description: {this.props.design.description}</p>
+          <p>
+            Tags:{" "}
+            {this.props.design.tags.map(tag => (
+              <Tag text={tag.text} key={tag.id} />
+            ))}
+          </p>
+          <CommentsContainer
+            designId={designId}
+            userId={this.props.userId}
+            commentsLength={this.props.design.comments.length}
+          />
+        </div>
+      </div>
     ) : null;
     return (
       <div className="card-modal">

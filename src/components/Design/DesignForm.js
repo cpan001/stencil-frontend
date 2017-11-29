@@ -1,17 +1,16 @@
 import React from "react";
 import InputBox from "../FormComponents/InputBox";
-import CheckBox from "../FormComponents/CheckBox";
 import ImagesUpload from "../FormComponents/ImagesUpload";
 import TagsInput from "./Form/TagsInput";
 import { addDesign } from "../../actions/designs";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addDesignAPI } from "../../services";
+import { Link, Redirect } from "react-router-dom";
 
 //add projects selection
 class DesignForm extends React.Component {
   state = {
-    open: false,
     design: {
       title: "",
       description: "",
@@ -41,13 +40,8 @@ class DesignForm extends React.Component {
     });
   };
 
-  handleClick = () => {
-    this.setState({ open: true });
-  };
-
   handleCloseClick = () => {
     this.setState({
-      open: false,
       design: {
         title: "",
         description: "",
@@ -105,7 +99,6 @@ class DesignForm extends React.Component {
     );
     addDesignAPI(newApiDesign, this.props.userId);
     this.setState({
-      open: false,
       design: {
         title: "",
         description: "",
@@ -116,16 +109,18 @@ class DesignForm extends React.Component {
         images: []
       }
     });
+    this.props.history.push("/designs");
   };
 
   render() {
-    const formOpen = this.state.open ? "open" : null;
+    console.log("hit designform");
     return (
       <div>
-        <input type="button" value="add design" onClick={this.handleClick} />
-        <div className={`card-modal form ${formOpen}`}>
+        <div className={`card-modal form open`}>
           <div className="modal-content">
-            <span onClick={this.handleCloseClick}>&times;</span>
+            <Link to="/designs" onClick={this.handleCloseClick}>
+              &times;
+            </Link>
             <form onSubmit={this.handleSubmit}>
               <h1>Add Design</h1>
               <InputBox

@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchDesigns } from "../../actions/designs";
 import DesignList from "./DesignList";
-import DesignForm from "./DesignForm";
 import SearchForm from "../FormComponents/SearchForm";
 
 class DesignBrowser extends React.Component {
@@ -27,13 +26,19 @@ class DesignBrowser extends React.Component {
     );
     console.log("hit design browser", showDesigns);
     return (
-      <div>
+      <div className="design-browser">
         <SearchForm
           searchTerm={this.state.searchTerm}
           onSearchChange={this.handleSearchChange}
         />
-        <DesignList designs={showDesigns} />
-        <DesignForm userId={this.props.userId} />
+        <div className="main-container">
+          <div className="empty-container" />
+
+          <div className="content-container">
+            <DesignList designs={showDesigns} />
+          </div>
+          <div className="empty-container" />
+        </div>
       </div>
     );
   }
