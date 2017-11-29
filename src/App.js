@@ -6,7 +6,7 @@ import SignUpForm from "./components/Authentication/SignUpForm";
 import SignInForm from "./components/Authentication/SignInForm";
 import DesignContainer from "./components/Design/DesignContainer";
 import { login } from "./services";
-import ProjectContainer from "./components/Project/ProjectContainer";
+import ProjectFormAlone from "./components/Project/ProjectFormAlone";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import NavBar from "./components/NavBar/NavBar";
 import DesignForm from "./components/Design/DesignForm";
@@ -58,9 +58,9 @@ class App extends Component {
             )}
           />
           <Route
-            path="/projects"
+            path="/projects/new"
             render={props => (
-              <ProjectContainer
+              <ProjectFormAlone
                 {...props}
                 userId={localStorage.getItem("user_id")}
               />

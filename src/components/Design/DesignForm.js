@@ -2,25 +2,31 @@ import React from "react";
 import InputBox from "../FormComponents/InputBox";
 import ImagesUpload from "../FormComponents/ImagesUpload";
 import TagsInput from "./Form/TagsInput";
+import ProjectForm from "../Project/ProjectForm";
 import { addDesign } from "../../actions/designs";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addDesignAPI } from "../../services";
 import { Link, Redirect } from "react-router-dom";
 
-//add projects selection
+//add project selection
 class DesignForm extends React.Component {
   state = {
+    next: false,
     design: {
       title: "",
       description: "",
       url: "",
       code: "",
-      projects: "",
+      project: "",
       images: [],
       tags: [],
       creator: {}
     }
+  };
+
+  handleNextClick = () => {
+    this.setState({ next: true });
   };
 
   handleTagChange = value => {
@@ -48,7 +54,7 @@ class DesignForm extends React.Component {
         url: "",
         code: "",
         tags: [],
-        projects: "",
+        project: "",
         images: []
       }
     });
@@ -85,6 +91,14 @@ class DesignForm extends React.Component {
           })
         });
         break;
+      case "project":
+        console.log("project change", value);
+        this.setState({
+          design: Object.assign({}, this.state.design, {
+            project: value
+          })
+        });
+        break;
       default:
         break;
     }
@@ -105,11 +119,12 @@ class DesignForm extends React.Component {
         url: "",
         code: "",
         tags: [],
-        projects: "",
+        project: "",
         images: []
       }
     });
     this.props.history.push("/designs");
+    // this.props.history.goBack();
   };
 
   render() {
@@ -168,7 +183,19 @@ class DesignForm extends React.Component {
                 images={this.state.design.images}
               />
               <br />
-              <input type="submit" value="Create Design" />
+              <input
+                type="button"
+                value="Next"
+                onClick={this.handleNextClick}
+              />
+              {this.state.next ? (
+                <ProjectForm
+                  onProjectChange={this.handleChange}
+                  project={this.state.design.project}
+                />
+              ) : null}
+              <br />
+              <input type="submit" value="Create" />
             </form>
           </div>
         </div>

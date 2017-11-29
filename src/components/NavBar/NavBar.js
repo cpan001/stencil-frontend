@@ -19,7 +19,7 @@ export default class NavBar extends React.Component {
         </div>
 
         <div className="link">
-          <NavLink to="/projects">Projects</NavLink>
+          <NavLink to="/projects/new">Add Project</NavLink>
         </div>
         <div className="link right">
           <NavLink to="/designs/new">

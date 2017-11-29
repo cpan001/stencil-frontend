@@ -7,6 +7,7 @@ import { fetchComments } from "../../../actions/comments";
 class CommentBrowser extends React.Component {
   componentDidMount() {
     this.props.fetchComments(this.props.designId);
+    console.log("hit comment browser CDM");
   }
   render() {
     return (

@@ -164,10 +164,10 @@ body {
 .image-description {
   flex: 6;
   color: #f9f9f9;
-  text-transform: capitalize;
   text-align: left;
   padding: 10px 15px;
   z-index: 12;
+  font-size: 12px;
 }
 
 /*Main Flex*/

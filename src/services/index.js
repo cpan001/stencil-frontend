@@ -1,5 +1,5 @@
 //RESTFUL functions
-function post(url, postData) {
+export function post(url, postData) {
   return fetch(url, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
@@ -7,13 +7,13 @@ function post(url, postData) {
   }).then(res => res.json());
 }
 
-// function get(url) {
-//   return fetch(url, {
-//     headers: { Accept: "application/json", "Content-Type": "application/json" }
-//   }).then(res => res.json());
-// }
+export function get(url) {
+  return fetch(url, {
+    headers: { Accept: "application/json", "Content-Type": "application/json" }
+  }).then(res => res.json());
+}
 
-function patch(url, postData) {
+export function patch(url, postData) {
   return fetch(url, {
     method: "PATCH",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
@@ -21,7 +21,7 @@ function patch(url, postData) {
   }).then(res => res.json());
 }
 
-function destroy(url) {
+export function destroy(url) {
   return fetch(url, {
     method: "DELETE",
     headers: { Accept: "application/json", "Content-Type": "application/json" }
@@ -66,6 +66,10 @@ export function createRelationship(userId, postData) {
 
 export function deleteRelationship(userId, currentUserId) {
   return destroy(`${baseURL}/users/${userId}/relationships/${currentUserId}`);
+}
+
+export function fetchUserProjects(userId) {
+  return get(`${baseURL}/users/${userId}/projects`);
 }
 
 // export function getUserInfo(userId) {

@@ -13,7 +13,6 @@ import { addLikeAPI, minusLikeAPI } from "../../services/index";
 class DesignCard extends React.Component {
   componentDidMount() {
     this.props.fetchDesign(this.props.designId);
-    console.log("hit componentDidMount THIS ONE");
   }
 
   handleLikeButtonClick = clicked => {

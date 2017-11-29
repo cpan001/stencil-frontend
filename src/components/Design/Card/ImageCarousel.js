@@ -36,10 +36,10 @@ export default class ImageCarousel extends React.Component {
       <div className="image-carousel">
         {images}{" "}
         <div onClick={this.handleMinusIndex} className="left-image-click">
-          <i class="material-icons">keyboard_arrow_left</i>
+          <i className="material-icons">keyboard_arrow_left</i>
         </div>
         <div onClick={this.handleAddIndex} className="right-image-click">
-          <i class="material-icons">keyboard_arrow_right</i>
+          <i className="material-icons">keyboard_arrow_right</i>
         </div>
       </div>
     );
