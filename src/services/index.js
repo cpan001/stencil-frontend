@@ -72,6 +72,13 @@ export function fetchUserProjects(userId) {
   return get(`${baseURL}/users/${userId}/projects`);
 }
 
+export function createAloneProject(userId, postData) {
+  return post(`${baseURL}/users/${userId}/projects`, postData);
+}
+
+export function saveDesigntoProject(userId, postData) {
+  return post(`${baseURL}/users/${userId}/project_designs`, postData);
+}
 // export function getUserInfo(userId) {
 //   return get(`${baseURL}/users/${userId}`);
 // }

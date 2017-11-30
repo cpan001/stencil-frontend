@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchUser } from "../../actions/users";
 import DesignList from "../Design/DesignList";
+import ProjectList from "../Project/ProjectList";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -20,11 +21,6 @@ class ProfileContainer extends React.Component {
 
   render() {
     const { params } = this.props.match;
-    console.log(
-      "hit profile container",
-      this.props.user.designs,
-      params.user_id
-    );
     return (
       <div>
         <ProfileNavBar userId={params.user_id} />
@@ -41,7 +37,7 @@ class ProfileContainer extends React.Component {
 
           <Route
             path="/users/:user_id/projects"
-            render={props => <div>hello projects</div>}
+            render={props => <ProjectList {...props} />}
           />
           <Route
             path="/users/:user_id"

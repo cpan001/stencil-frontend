@@ -324,6 +324,41 @@ body {
 
 .design-actions {
   flex: 2;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  align-items: center;
+  font-size: 18px;
+}
+
+.design-action {
+  width: 75%;
+  text-align: left;
+  padding: 10px 10px 10px 30px;
+  color: #999;
+  line-height: 35px;
+  border-bottom: 1px solid #dddddd;
+  display: flex;
+  align-items: center;
+}
+
+.design-action a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.design-card-icons {
+  margin-right: 15px;
+  font-size: 28px;
+}
+
+.design-action.comments-container {
+  border-bottom: 0px;
+}
+.design-action.comments-container div {
+  display: flex;
+  align-items: center;
 }
 
 /*third section*/
@@ -332,3 +367,5 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/*My Project View*/

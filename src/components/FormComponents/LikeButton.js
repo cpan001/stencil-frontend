@@ -16,16 +16,17 @@ export default class LikeButton extends React.Component {
   render() {
     const button = this.state.clicked ? (
       <span className="like-clicked" onClick={this.handleClick}>
-        &#9829;
+        <i className="material-icons design-card-icons">favorite</i>
       </span>
     ) : (
       <span className="like-not-clicked" onClick={this.handleClick}>
-        &#9825;
+        <i className="material-icons design-card-icons">favorite_border</i>
       </span>
     );
     return (
-      <div className="like">
-        Likes: {this.props.likes} {button}
+      <div className="design-action like">
+        <span className="like-button">{button} Save</span>
+        <span className="like-number">Likes: {this.props.likes}</span>
       </div>
     );
   }

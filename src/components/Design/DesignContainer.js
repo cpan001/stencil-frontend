@@ -14,6 +14,7 @@ export default class DesignContainer extends React.Component {
             render={props => {
               return (
                 <DesignCard
+                  {...props}
                   designId={props.match.params.designId}
                   userId={localStorage.getItem("user_id")}
                 />

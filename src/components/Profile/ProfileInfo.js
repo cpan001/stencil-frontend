@@ -4,7 +4,6 @@ import FollowershipButton from "./FollowershipButton";
 
 export default class ProfileInfo extends React.Component {
   render() {
-    console.log(this.props.user, "hit rofile info");
     return (
       <div className="profile-info">
         Name: {this.props.user.name}

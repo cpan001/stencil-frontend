@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import InputBox from "../FormComponents/InputBox";
 import RSelect from "./RSelect";
+import { createAloneProject } from "../../services/index";
 
 export default class ProjectFormAlone extends React.Component {
   state = {
@@ -27,7 +28,7 @@ export default class ProjectFormAlone extends React.Component {
   handleSelectChange = collaborators => {
     this.setState({
       project: Object.assign({}, this.state.project, {
-        collaborators
+        collaborators: collaborators.map(c => c.value)
       })
     });
   };
@@ -54,7 +55,10 @@ export default class ProjectFormAlone extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.project);
+    const userId = localStorage.getItem("user_id");
+    createAloneProject(userId, this.state.project).then(json =>
+      this.props.history.push(`/projects/${json.id}`)
+    );
   };
 
   render() {

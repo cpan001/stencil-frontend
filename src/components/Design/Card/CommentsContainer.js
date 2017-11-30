@@ -18,9 +18,10 @@ export default class CommentsContainer extends React.Component {
       <CommentBrowser designId={this.props.designId} />
     ) : null;
     return (
-      <div className="comments-container">
+      <div className="design-action comments-container">
         <div onClick={this.handleCommentClick}>
-          {this.props.commentsLength} Comment(s)
+          <i className="material-icons design-card-icons">comment</i>
+          <span>{this.props.commentsLength} Comment(s)</span>
         </div>
         {form}
         {browser}

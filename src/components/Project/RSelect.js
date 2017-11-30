@@ -1,5 +1,5 @@
 import React from "react";
-import { Async, Select } from "react-select";
+import { Async } from "react-select";
 import "react-select/dist/react-select.css";
 
 export default class RSelect extends React.Component {
@@ -33,7 +33,6 @@ export default class RSelect extends React.Component {
         <p>Collaborators</p>
         <Async
           name="form-field-name"
-          value="one"
           loadOptions={this.loadOptions}
           multi
           onChange={this.onChange}

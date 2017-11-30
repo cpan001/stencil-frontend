@@ -1,16 +1,24 @@
 import React from "react";
 import ImageCarousel from "./Card/ImageCarousel";
 import Tag from "./Card/Tag";
-import CommentsContainer from "./Card/CommentsContainer";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import LikeButton from "../FormComponents/LikeButton";
 import ProfileImage from "../FormComponents/ProfileImage";
 import { bindActionCreators } from "redux";
 import { addLike, minusLike, fetchDesign } from "../../actions/designs";
-import { addLikeAPI, minusLikeAPI } from "../../services/index";
+import {
+  addLikeAPI,
+  minusLikeAPI,
+  saveDesigntoProject
+} from "../../services/index";
+import ProjectFormPlusSubmit from "../Project/ProjectFormPlusSubmit";
+import DesignActions from "./Card/DesignActions";
 
 class DesignCard extends React.Component {
+  state = {
+    projectAddButtonClicked: false
+  };
+
   componentDidMount() {
     this.props.fetchDesign(this.props.designId);
   }
@@ -26,9 +34,21 @@ class DesignCard extends React.Component {
       minusLikeAPI(userId, designId, 1);
     }
   };
+
+  handleProjectAddClick = () => {
+    this.setState({ projectAddButtonClicked: true });
+  };
+
+  handleProjectSubmit = project => {
+    const postData = {
+      project: project,
+      designId: this.props.designId,
+      creatorId: this.props.userId
+    };
+    saveDesigntoProject(this.props.userId, postData);
+    this.props.history.push("/designs");
+  };
   render() {
-    const designId = this.props.designId;
-    const designCheck = this.props.design;
     const showDesign = this.props.design ? (
       <div className="design-card-main">
         <div className="design-title-area">
@@ -45,22 +65,18 @@ class DesignCard extends React.Component {
             images={this.props.design.images}
             number={this.props.design.images.length}
           />
-
-          <div className="design-actions">
-            <LikeButton
+          {this.state.projectAddButtonClicked ? (
+            <ProjectFormPlusSubmit onProjectSubmit={this.handleProjectSubmit} />
+          ) : (
+            <DesignActions
               likes={this.props.likes.length}
-              onLikeButtonClick={this.handleLikeButtonClick}
-              clicked={this.props.design.likes.some(
-                like => like.liker_id === parseInt(this.props.userId, 10)
-              )}
+              handleLikeButtonClick={this.handleLikeButtonClick}
+              design={this.props.design}
+              designId={this.props.designId}
+              userId={this.props.userId}
+              onProjectAddClick={this.handleProjectAddClick}
             />
-            <a href={this.props.design.url} target="_blank">
-              Site Link
-            </a>
-            <a href={this.props.design.code} target="_blank">
-              Code Link
-            </a>
-          </div>
+          )}
         </div>
         <div className="last-design-section">
           <p>Description: {this.props.design.description}</p>
@@ -70,11 +86,6 @@ class DesignCard extends React.Component {
               <Tag text={tag.text} key={tag.id} />
             ))}
           </p>
-          <CommentsContainer
-            designId={designId}
-            userId={this.props.userId}
-            commentsLength={this.props.design.comments.length}
-          />
         </div>
       </div>
     ) : null;

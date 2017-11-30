@@ -10,6 +10,7 @@ import ProjectFormAlone from "./components/Project/ProjectFormAlone";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import NavBar from "./components/NavBar/NavBar";
 import DesignForm from "./components/Design/DesignForm";
+import ProjectContainer from "./components/Project/ProjectContainer";
 
 class App extends Component {
   state = {};
@@ -61,6 +62,15 @@ class App extends Component {
             path="/projects/new"
             render={props => (
               <ProjectFormAlone
+                {...props}
+                userId={localStorage.getItem("user_id")}
+              />
+            )}
+          />
+          <Route
+            path="/projects/:projectId"
+            render={props => (
+              <ProjectContainer
                 {...props}
                 userId={localStorage.getItem("user_id")}
               />

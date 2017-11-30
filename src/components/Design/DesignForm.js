@@ -7,7 +7,7 @@ import { addDesign } from "../../actions/designs";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addDesignAPI } from "../../services";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //add project selection
 class DesignForm extends React.Component {
