@@ -15,7 +15,8 @@ export default class RSelect extends React.Component {
       .then(json => {
         json = json.map(person => ({
           value: person["id"],
-          label: person["name"]
+          label: person["name"],
+          avatar: person["avatar"]
         }));
         return { options: json };
       });

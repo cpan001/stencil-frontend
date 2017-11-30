@@ -79,6 +79,14 @@ export function createAloneProject(userId, postData) {
 export function saveDesigntoProject(userId, postData) {
   return post(`${baseURL}/users/${userId}/project_designs`, postData);
 }
+
+export function addMemberToProject(projectId, postData) {
+  return post(`${baseURL}/projects/${projectId}/collaborations`, postData);
+}
+
+export function removeMemberToProject(projectId, userId) {
+  return destroy(`${baseURL}/projects/${projectId}/collaborations/${userId}`);
+}
 // export function getUserInfo(userId) {
 //   return get(`${baseURL}/users/${userId}`);
 // }

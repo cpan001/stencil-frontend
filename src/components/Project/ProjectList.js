@@ -12,7 +12,12 @@ class ProjectList extends React.Component {
     const { params } = this.props.match;
     const projectCards = this.props.projects
       ? this.props.projects.map(proj => (
-          <ProjectCardDisplay {...proj} key={proj.id} userId={params.user_id} />
+          <ProjectCardDisplay
+            {...proj}
+            key={proj.id}
+            {...this.props}
+            userId={params.user_id}
+          />
         ))
       : null;
     return <div className="project-list">{projectCards}</div>;

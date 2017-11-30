@@ -17,6 +17,26 @@ function projects(state = { isFetching: false, projects: null }, action) {
       let updatedProjects = { ...state.projects };
       updatedProjects[action.payload.id] = action.payload;
       return Object.assign({}, state, { projects: updatedProjects });
+    case "ADD_MEMBER":
+      let nProjects = { ...state.projects };
+      let project = nProjects[action.payload.projectId];
+      let find = project["jointusers"].find(
+        u => u.id === parseInt(action.payload.member.id, 10)
+      );
+      if (!find) {
+        project["jointusers"] = [
+          ...project["jointusers"],
+          action.payload.member
+        ];
+      }
+      return Object.assign({}, state, { projects: nProjects });
+    case "REMOVE_MEMBER":
+      let newProjects = { ...state.projects };
+      let nProject = newProjects[action.payload.projectId];
+      nProject["jointusers"] = nProject["jointusers"].filter(
+        u => u.id !== parseInt(action.payload.memberId, 10)
+      );
+      return Object.assign({}, state, { projects: newProjects });
     default:
       return state;
   }

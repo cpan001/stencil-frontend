@@ -8,11 +8,11 @@ class ProjectContainer extends React.Component {
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.projectId);
   }
+
   render() {
-    console.log(this.props.project);
     const showProject = this.props.project["creator"] ? (
       <div>
-        <ProjectProfileContainer project={this.props.project} />
+        <ProjectProfileContainer project={this.props.project} {...this.props} />
         <hr />
         <DesignList designs={this.props.project.designs} />
       </div>
@@ -25,7 +25,7 @@ function mapStateToProps(state, ownProps) {
   const projectId = ownProps.match.params.projectId;
   if (state.projects.projects) {
     const project = state.projects.projects[projectId];
-    return { project };
+    return { project, jointusers: project["jointusers"] };
   } else {
     return { project: {} };
   }

@@ -8,11 +8,16 @@ export default class CollaboratorsButton extends React.Component {
   handleClick = () => {
     this.setState({ isOpen: true });
   };
+  handleCloseClick = () => {
+    this.setState({ isOpen: false });
+  };
   render() {
     const showMembers = this.state.isOpen ? (
       <MembersCard
         creator={this.props.creator}
         collaborators={this.props.collaborators}
+        {...this.props}
+        onCloseClick={this.handleCloseClick}
       />
     ) : null;
     return (
