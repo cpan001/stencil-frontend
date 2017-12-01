@@ -59,11 +59,20 @@ body {
 
 /*Like Button*/
 .like-not-clicked {
-  color: black;
+  color: #999;
+}
+
+.like-not-clicked:hover {
+  color: #555;
+  cursor: pointer;
 }
 
 .like-clicked {
-  color: red;
+  color: #ed4956;
+}
+
+.like-clicked span {
+  color: #999;
 }
 
 /*HomeNavBar*/
@@ -240,6 +249,7 @@ body {
   display: flex;
   flex-direction: row;
   margin-bottom: 30px;
+  padding-left: 13px;
 }
 
 .user-image {
@@ -279,10 +289,16 @@ body {
 }
 
 /*second section*/
-.design-images-actions {
-  flex: 3;
+.design-card-second {
+  flex: 5;
   display: flex;
   flex-direction: row;
+}
+
+.design-images-actions {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
 }
 
 .image-carousel {
@@ -328,7 +344,7 @@ body {
   flex-direction: column;
   padding-left: 10px;
   align-items: center;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .design-action {
@@ -346,6 +362,41 @@ body {
   display: flex;
   align-items: center;
   text-decoration: none;
+  color: #999;
+}
+
+.design-action a:hover,
+.comments-button:hover,
+.project-add-clicked:hover {
+  color: #555;
+  cursor: pointer;
+}
+
+.project-add-clicked {
+  display: flex;
+  align-items: center;
+}
+
+.design-action.like {
+  display: flex;
+  flex-direction: row;
+}
+
+.design-action div:first-child {
+  flex: 1;
+}
+.design-action div:last-child {
+  flex: 1;
+}
+
+.like-button span {
+  display: flex;
+  align-items: center;
+}
+
+.like-number {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .design-card-icons {
@@ -355,10 +406,66 @@ body {
 
 .design-action.comments-container {
   border-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
-.design-action.comments-container div {
+
+.comments-button {
   display: flex;
   align-items: center;
+}
+
+.comment-form input {
+  border-radius: 4px;
+  border: 1px solid #efefef;
+  cursor: text;
+  margin: 10px 0;
+  padding: 8px 12px;
+  width: 155%;
+  color: #555;
+  font-size: 14px;
+  background-color: #efefef;
+}
+
+.comment-card {
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 2px 0;
+  width: 290px;
+}
+
+.comment-card span:nth-child(1) {
+  font-weight: 600;
+  color: #555;
+  margin-right: 8px;
+  flex: 1;
+}
+
+.comment-card span:nth-child(2) {
+  color: #555;
+  margin-right: 8px;
+  flex: 3;
+  word-wrap: break-word;
+  line-height: normal;
+}
+
+.comment-vote {
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.comment-vote span {
+  color: #999;
+}
+
+.comment-vote i {
+  align-self: center;
+  font-size: 18px;
+  margin-right: 3px;
 }
 
 /*third section*/
@@ -366,6 +473,29 @@ body {
   flex: 3;
   display: flex;
   flex-direction: column;
+}
+
+.details-description {
+  margin: 40px 20px 40px 20px;
+  padding: 0 13px;
+  font-size: 16px;
+  text-align: left;
+  color: #555;
+  line-height: 18px;
+}
+
+.details-tags {
+  text-align: left;
+  padding-left: 30px;
+}
+
+.tag {
+  background-color: rgba(153, 153, 153, 0.24);
+  border-radius: 3px;
+  padding: 5px 10px;
+  font-weight: 400;
+  font-size: 14px;
+  margin-right: 8px;
 }
 
 /*My Project View*/

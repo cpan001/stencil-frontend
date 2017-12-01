@@ -19,7 +19,7 @@ export default class CommentsContainer extends React.Component {
     ) : null;
     return (
       <div className="design-action comments-container">
-        <div onClick={this.handleCommentClick}>
+        <div className="comments-button" onClick={this.handleCommentClick}>
           <i className="material-icons design-card-icons">comment</i>
           <span>{this.props.commentsLength} Comment(s)</span>
         </div>

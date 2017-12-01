@@ -23,7 +23,7 @@ class ProjectContainer extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   const projectId = ownProps.match.params.projectId;
-  if (state.projects.projects) {
+  if (state.projects.projects && state.projects.projects[projectId]) {
     const project = state.projects.projects[projectId];
     return { project, jointusers: project["jointusers"] };
   } else {

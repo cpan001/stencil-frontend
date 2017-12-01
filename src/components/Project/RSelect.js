@@ -39,7 +39,7 @@ export default class RSelect extends React.Component {
           loadOptions={this.loadOptions}
           multi
           onChange={this.onChange}
-          value={this.state.value}
+          value={this.props.value}
           isLoading
         />
       </div>

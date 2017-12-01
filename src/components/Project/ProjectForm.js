@@ -2,6 +2,7 @@ import React from "react";
 import InputBox from "../FormComponents/InputBox";
 import { connect } from "react-redux";
 import { fetchUserProjects } from "../../services/index";
+import jwt_decode from "jwt-decode";
 
 class ProjectForm extends React.Component {
   state = {
@@ -10,7 +11,8 @@ class ProjectForm extends React.Component {
   };
 
   componentDidMount() {
-    fetchUserProjects(this.props.userId).then(projects => {
+    const userId = jwt_decode(localStorage.getItem("jwt"))["user_id"];
+    fetchUserProjects(userId).then(projects => {
       console.log(projects, "PROJECTS");
       this.setState({ currentUserProjects: projects });
     });

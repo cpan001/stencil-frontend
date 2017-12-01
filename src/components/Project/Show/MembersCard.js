@@ -5,6 +5,7 @@ import RSelect from "../RSelect";
 import { addMember, removeMember } from "../../../actions/projects";
 import { addMemberToProject, removeMemberToProject } from "../../../services";
 import { connect } from "react-redux";
+import jwt_decode from "jwt-decode";
 
 class MembersCard extends React.Component {
   state = {
@@ -40,6 +41,10 @@ class MembersCard extends React.Component {
 
   render() {
     const projectId = this.props.match.params.projectId;
+    const viewerId = jwt_decode(localStorage.getItem("jwt"))["user_id"];
+    const groupMember =
+      this.props.collaborators.some(c => c === viewerId) ||
+      this.props.creator.id === viewerId;
     return (
       <div className="card-modal members">
         <Link to={`/projects/${projectId}`} onClick={this.props.onCloseClick}>
@@ -47,15 +52,19 @@ class MembersCard extends React.Component {
         </Link>
         <div className="modal-content">
           <h1>Members</h1>
-          Add Member
-          <div className="add-members">
-            <RSelect onSelectChange={this.handleSelectChange} />
-            <input
-              type="button"
-              value="Add New Member(s)"
-              onClick={this.handleAddMember}
-            />
-          </div>
+          {groupMember ? (
+            <div className="add-members">
+              <RSelect
+                value={this.state.newCollaborators}
+                onSelectChange={this.handleSelectChange}
+              />
+              <input
+                type="button"
+                value="Add New Member(s)"
+                onClick={this.handleAddMember}
+              />
+            </div>
+          ) : null}
           <p>Creator</p>
           <MemberCard person={this.props.creator} owner={true} />
           <hr />
@@ -66,6 +75,7 @@ class MembersCard extends React.Component {
               key={c.id}
               person={c}
               onRemoveMember={this.handleRemoveMember}
+              canRemoveMembers={groupMember}
             />
           ))}
         </div>

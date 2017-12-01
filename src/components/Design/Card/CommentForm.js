@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addComment } from "../../../actions/comments";
 import { createComment } from "../../../services/index";
+import jwt_decode from "jwt-decode";
 
 class CommentForm extends React.Component {
   state = {
@@ -16,9 +17,11 @@ class CommentForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const userName = jwt_decode(localStorage.getItem("jwt"))["user_name"];
     this.props.addComment({
       content: this.state.comment,
       user_id: this.props.userId,
+      user: { name: userName },
       design_id: this.props.designId,
       votes: 0
     });
@@ -30,11 +33,11 @@ class CommentForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="comment-form" onSubmit={this.handleSubmit}>
         <InputBox
           id="comment"
           name="comment"
-          placeholder="Enter comment"
+          placeholder="Add comment"
           type="text"
           onChange={this.handleChange}
           value={this.state.comment}

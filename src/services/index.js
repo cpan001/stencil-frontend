@@ -123,11 +123,3 @@ export function createUser(postData) {
     body: JSON.stringify(postData)
   });
 }
-
-// export function getUserInfo(userId) {
-//   return get(`${baseURL}/users/${userId}`);
-// }
-
-export function login(postData) {
-  return post(`${baseURL}/signin`, postData);
-}

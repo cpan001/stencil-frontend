@@ -60,32 +60,39 @@ class DesignCard extends React.Component {
             <p>By {this.props.design.creator.name}</p>
           </div>
         </div>
-        <div className="design-images-actions">
-          <ImageCarousel
-            images={this.props.design.images}
-            number={this.props.design.images.length}
-          />
-          {this.state.projectAddButtonClicked ? (
-            <ProjectFormPlusSubmit onProjectSubmit={this.handleProjectSubmit} />
-          ) : (
-            <DesignActions
-              likes={this.props.likes.length}
-              handleLikeButtonClick={this.handleLikeButtonClick}
-              design={this.props.design}
-              designId={this.props.designId}
-              userId={this.props.userId}
-              onProjectAddClick={this.handleProjectAddClick}
-            />
-          )}
-        </div>
-        <div className="last-design-section">
-          <p>Description: {this.props.design.description}</p>
-          <p>
-            Tags:{" "}
-            {this.props.design.tags.map(tag => (
-              <Tag text={tag.text} key={tag.id} />
-            ))}
-          </p>
+        <div className="design-card-second">
+          <div className="last-design-section">
+            <div className="details">
+              <ImageCarousel
+                images={this.props.design.images}
+                number={this.props.design.images.length}
+              />
+              <div className="details-description">
+                {this.props.design.description}
+              </div>
+              <div className="details-tags">
+                {this.props.design.tags.map(tag => (
+                  <Tag text={tag.text} key={tag.id} />
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="design-images-actions">
+            {this.state.projectAddButtonClicked ? (
+              <ProjectFormPlusSubmit
+                onProjectSubmit={this.handleProjectSubmit}
+              />
+            ) : (
+              <DesignActions
+                likes={this.props.likes.length}
+                handleLikeButtonClick={this.handleLikeButtonClick}
+                design={this.props.design}
+                designId={this.props.designId}
+                userId={this.props.userId}
+                onProjectAddClick={this.handleProjectAddClick}
+              />
+            )}
+          </div>
         </div>
       </div>
     ) : null;

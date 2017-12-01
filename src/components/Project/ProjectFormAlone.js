@@ -28,7 +28,7 @@ export default class ProjectFormAlone extends React.Component {
   handleSelectChange = collaborators => {
     this.setState({
       project: Object.assign({}, this.state.project, {
-        collaborators: collaborators.map(c => c.value)
+        collaborators: collaborators
       })
     });
   };
@@ -56,9 +56,12 @@ export default class ProjectFormAlone extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const userId = this.props.userId;
-    createAloneProject(userId, this.state.project).then(json =>
-      this.props.history.push(`/projects/${json.id}`)
-    );
+    let project = this.state.project;
+    project["collaborators"] = project["collaborators"].map(c => c.value);
+    createAloneProject(userId, project).then(json => {
+      console.log(json);
+      this.props.history.push(`/projects/${json.id}`);
+    });
   };
 
   render() {
@@ -87,7 +90,10 @@ export default class ProjectFormAlone extends React.Component {
                 onChange={this.handleChange}
                 value={this.state.project.description}
               />
-              <RSelect onSelectChange={this.handleSelectChange} />
+              <RSelect
+                onSelectChange={this.handleSelectChange}
+                value={this.state.project.collaborators}
+              />
               <input type="submit" value="Create" />
             </form>
           </div>

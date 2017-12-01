@@ -5,7 +5,6 @@ import Home from "./components/Home/HomeContainer";
 import SignUpForm from "./components/Authentication/SignUpForm";
 import SignInForm from "./components/Authentication/SignInForm";
 import DesignContainer from "./components/Design/DesignContainer";
-import { login } from "./services";
 import ProjectFormAlone from "./components/Project/ProjectFormAlone";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import NavBar from "./components/NavBar/NavBar";
