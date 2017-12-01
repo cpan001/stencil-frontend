@@ -16,7 +16,7 @@ export default class DesignContainer extends React.Component {
                 <DesignCard
                   {...props}
                   designId={props.match.params.designId}
-                  userId={localStorage.getItem("user_id")}
+                  userId={this.props.userId}
                 />
               );
             }}
@@ -24,12 +24,7 @@ export default class DesignContainer extends React.Component {
           <Route
             path="/designs"
             render={props => {
-              return (
-                <DesignBrowser
-                  {...props}
-                  userId={localStorage.getItem("user_id")}
-                />
-              );
+              return <DesignBrowser {...props} userId={this.props.userId} />;
             }}
           />
         </Switch>

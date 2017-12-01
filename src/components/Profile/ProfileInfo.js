@@ -10,6 +10,7 @@ export default class ProfileInfo extends React.Component {
         <FollowershipButton
           userId={this.props.userId}
           followers={this.props.user.followers}
+          viewerId={this.props.viewerId}
         />
         <img src={this.props.user.avatar} alt="" width="100px" height="100px" />
         <p />

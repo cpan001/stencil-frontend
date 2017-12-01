@@ -10,7 +10,7 @@ class FollowershipButton extends React.Component {
   };
 
   handleClick = e => {
-    const currentUserId = localStorage.getItem("user_id");
+    const currentUserId = this.props.viewerId;
     if (e.target.value === "follow") {
       this.props.addFollower({ id: currentUserId });
       this.setState({ following: true });
@@ -26,7 +26,7 @@ class FollowershipButton extends React.Component {
     }
   };
   render() {
-    const currentUserId = localStorage.getItem("user_id");
+    const currentUserId = this.props.viewerId;
     const following = this.props.followers
       ? this.props.followers.some(f => f.id === parseInt(currentUserId, 10))
       : null;

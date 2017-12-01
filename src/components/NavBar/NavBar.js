@@ -21,6 +21,9 @@ export default class NavBar extends React.Component {
         <div className="link">
           <NavLink to="/projects/new">Add Project</NavLink>
         </div>
+        <div className="link">
+          <NavLink to="/logout">Log Out</NavLink>
+        </div>
         <div className="link right">
           <NavLink to="/designs/new">
             <i className="material-icons navbar-icons">file_upload</i>
@@ -32,7 +35,7 @@ export default class NavBar extends React.Component {
           </NavLink>
         </div>
         <div className="link right">
-          <NavLink to={`/users/${localStorage.getItem("user_id")}`}>
+          <NavLink to={`/users/${this.props.userId}`}>
             <i className="material-icons navbar-icons">person</i>
           </NavLink>
         </div>

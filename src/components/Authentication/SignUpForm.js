@@ -2,12 +2,14 @@ import React from "react";
 import Dropzone from "react-dropzone";
 import request from "superagent";
 import InputBox from "../FormComponents/InputBox";
-import { createUser } from "../../services/index";
+// import { createUser } from "../../services/index";
+import { signUpUser } from "../../actions/users";
+import { connect } from "react-redux";
 
 const upload_preset = "kkncgfpk";
 const upload_url = "https://api.cloudinary.com/v1_1/dzmtr75qy/upload";
 
-export default class SignUpForm extends React.Component {
+class SignUpForm extends React.Component {
   state = {
     uploadedFileCloudinaryUrl: "",
     name: "",
@@ -58,16 +60,21 @@ export default class SignUpForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    createUser({
+    this.props.signUpUser({
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       avatar: this.state.uploadedFileCloudinaryUrl
-    }).then(json => console.log(json));
+    });
+    // createUser({
+    //   name: this.state.name,
+    //   email: this.state.email,
+    //   password: this.state.password,
+    //   avatar: this.state.uploadedFileCloudinaryUrl
+    // }).then(json => console.log(json));
   };
 
   render() {
-    console.log("hit signup form");
     const uploadedImageSection =
       this.state.uploadedFileCloudinaryUrl === "" ? (
         <Dropzone multiple={false} accept="image/*" onDrop={this.onImageDrop}>
@@ -130,3 +137,5 @@ export default class SignUpForm extends React.Component {
     );
   }
 }
+
+export default connect(null, { signUpUser })(SignUpForm);

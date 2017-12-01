@@ -1,7 +1,9 @@
 import React from "react";
 import InputBox from "../FormComponents/InputBox";
+import { loginUser } from "../../actions/users";
+import { connect } from "react-redux";
 
-export default class SignInForm extends React.Component {
+class SignInForm extends React.Component {
   state = {
     email: "",
     password: ""
@@ -22,7 +24,7 @@ export default class SignInForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onLogin(this.state);
+    this.props.loginUser(this.state);
     this.setState({ email: "", password: "" });
   };
 
@@ -53,3 +55,5 @@ export default class SignInForm extends React.Component {
     );
   }
 }
+
+export default connect(null, { loginUser })(SignInForm);

@@ -10,7 +10,7 @@ class ProjectForm extends React.Component {
   };
 
   componentDidMount() {
-    fetchUserProjects(localStorage.getItem("user_id")).then(projects => {
+    fetchUserProjects(this.props.userId).then(projects => {
       console.log(projects, "PROJECTS");
       this.setState({ currentUserProjects: projects });
     });

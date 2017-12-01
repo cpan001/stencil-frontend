@@ -24,7 +24,11 @@ class ProfileContainer extends React.Component {
     return (
       <div>
         <ProfileNavBar userId={params.user_id} />
-        <ProfileInfo userId={params.user_id} user={this.props.user} />
+        <ProfileInfo
+          userId={params.user_id}
+          user={this.props.user}
+          viewerId={this.props.viewerId}
+        />
         <Switch>
           <Route
             path="/users/:user_id/designs"

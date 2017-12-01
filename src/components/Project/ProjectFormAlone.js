@@ -9,7 +9,7 @@ export default class ProjectFormAlone extends React.Component {
     project: {
       title: "",
       description: "",
-      creator: localStorage.getItem("user_id"),
+      creator: this.props.userId,
       collaborators: []
     }
   };
@@ -55,7 +55,7 @@ export default class ProjectFormAlone extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const userId = localStorage.getItem("user_id");
+    const userId = this.props.userId;
     createAloneProject(userId, this.state.project).then(json =>
       this.props.history.push(`/projects/${json.id}`)
     );

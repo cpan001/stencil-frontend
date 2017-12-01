@@ -192,6 +192,7 @@ class DesignForm extends React.Component {
                 <ProjectForm
                   onProjectChange={this.handleChange}
                   project={this.state.design.project}
+                  userId={this.props.userId}
                 />
               ) : null}
               <br />

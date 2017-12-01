@@ -2,21 +2,33 @@
 export function post(url, postData) {
   return fetch(url, {
     method: "POST",
-    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`
+    },
     body: JSON.stringify(postData)
   }).then(res => res.json());
 }
 
 export function get(url) {
   return fetch(url, {
-    headers: { Accept: "application/json", "Content-Type": "application/json" }
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`
+    }
   }).then(res => res.json());
 }
 
 export function patch(url, postData) {
   return fetch(url, {
     method: "PATCH",
-    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`
+    },
     body: JSON.stringify(postData)
   }).then(res => res.json());
 }
@@ -24,16 +36,16 @@ export function patch(url, postData) {
 export function destroy(url) {
   return fetch(url, {
     method: "DELETE",
-    headers: { Accept: "application/json", "Content-Type": "application/json" }
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`
+    }
   }).then(res => res.json());
 }
 
 //Specific action functions
 const baseURL = "http://localhost:3000/api/v1";
-
-export function createUser(postData) {
-  return post(`${baseURL}/signup`, postData);
-}
 
 export function createComment(userId, designId, postData) {
   return post(
@@ -87,6 +99,31 @@ export function addMemberToProject(projectId, postData) {
 export function removeMemberToProject(projectId, userId) {
   return destroy(`${baseURL}/projects/${projectId}/collaborations/${userId}`);
 }
+
+export function signInUser(postData) {
+  return fetch(`${baseURL}/signin`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`
+    },
+    body: JSON.stringify(postData)
+  });
+}
+
+export function createUser(postData) {
+  return fetch(`${baseURL}/signup`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`
+    },
+    body: JSON.stringify(postData)
+  });
+}
+
 // export function getUserInfo(userId) {
 //   return get(`${baseURL}/users/${userId}`);
 // }
