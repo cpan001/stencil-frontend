@@ -23,31 +23,68 @@ class ProfileContainer extends React.Component {
     const { params } = this.props.match;
     return (
       <div>
-        <ProfileNavBar userId={params.user_id} />
-        <ProfileInfo
-          userId={params.user_id}
-          user={this.props.user}
-          viewerId={this.props.viewerId}
-        />
         <Switch>
           <Route
             path="/users/:user_id/designs"
             render={props => {
               return (
-                <DesignList {...props} designs={this.props.user.designs} />
+                <div className="main-container">
+                  <div className="empty-container" />
+                  <div className="content-container">
+                    <ProfileInfo
+                      userId={params.user_id}
+                      user={this.props.user}
+                      viewerId={this.props.viewerId}
+                    />
+                    <ProfileNavBar userId={params.user_id} />
+                    <DesignList {...props} designs={this.props.user.designs} />
+                  </div>
+                  <div className="empty-container" />
+                </div>
               );
             }}
           />
 
           <Route
             path="/users/:user_id/projects"
-            render={props => <ProjectList {...props} />}
+            render={props => (
+              <div className="main-container">
+                <div className="empty-container" />
+
+                <div className="content-container">
+                  <ProfileInfo
+                    userId={params.user_id}
+                    user={this.props.user}
+                    viewerId={this.props.viewerId}
+                  />{" "}
+                  <ProfileNavBar userId={params.user_id} />
+                  <ProjectList {...props} />
+                </div>
+                <div className="empty-container" />
+              </div>
+            )}
           />
           <Route
             path="/users/:user_id"
             render={props => {
               return (
-                <DesignList {...props} designs={this.props.user.likeddesigns} />
+                <div className="main-container">
+                  <div className="empty-container" />
+
+                  <div className="content-container">
+                    <ProfileInfo
+                      userId={params.user_id}
+                      user={this.props.user}
+                      viewerId={this.props.viewerId}
+                    />
+                    <ProfileNavBar userId={params.user_id} />
+                    <DesignList
+                      {...props}
+                      designs={this.props.user.likeddesigns}
+                    />
+                  </div>
+                  <div className="empty-container" />
+                </div>
               );
             }}
           />

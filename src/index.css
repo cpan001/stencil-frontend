@@ -32,9 +32,9 @@ body {
 .modal-content {
   background-color: #fafafa;
   margin: 5% auto;
-  padding: 20px;
+  padding: 10px 0px;
   border: 1px solid #888;
-  width: 75%;
+  width: 70%;
   border-radius: 8px;
 }
 
@@ -141,6 +141,7 @@ body {
 }
 
 .image-text {
+  white-space: pre-wrap;
   height: 100%;
   width: 100%;
   display: inline;
@@ -249,7 +250,7 @@ body {
   display: flex;
   flex-direction: row;
   margin-bottom: 30px;
-  padding-left: 13px;
+  padding-left: 0px;
 }
 
 .user-image {
@@ -476,8 +477,7 @@ body {
 }
 
 .details-description {
-  margin: 40px 20px 40px 20px;
-  padding: 0 13px;
+  margin: 40px 20px 40px 13px;
   font-size: 16px;
   text-align: left;
   color: #555;
@@ -486,13 +486,13 @@ body {
 
 .details-tags {
   text-align: left;
-  padding-left: 30px;
+  padding-left: 11px;
 }
 
 .tag {
   background-color: rgba(153, 153, 153, 0.24);
   border-radius: 3px;
-  padding: 5px 10px;
+  padding: 9px 16px;
   font-weight: 400;
   font-size: 14px;
   margin-right: 8px;
@@ -502,4 +502,287 @@ body {
 
 .card-modal.members {
   z-index: 100;
+}
+
+/*My Profile View*/
+
+.content-container .profile-info {
+  padding: 20px 150px;
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-image-container {
+  flex: 1;
+}
+
+.profile-image-container .profile-image {
+  width: 152px;
+  height: 152px;
+}
+
+.profile-description {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-description .profile-name {
+  flex: 1.6;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.profile-description .profile-name p {
+  font-size: 32px;
+  font-weight: 200;
+}
+.profile-description .profile-name input {
+  margin-left: 20px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  overflow: hidden;
+  width: 95px;
+  background: #3897f0;
+  border-color: #3897f0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.profile-description .profile-actions {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 16px;
+}
+
+.designs-num {
+  flex: 1;
+}
+
+.actions-num {
+  font-weight: 600;
+  color: #262626;
+}
+
+.relationships-button {
+  flex: 1;
+  cursor: pointer;
+}
+
+.design-actions-empty-container {
+  flex: 1;
+}
+
+.profile-description .profile-email {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.profile-description .profile-email i {
+  color: #262626;
+  margin-right: 10px;
+}
+
+.profile-description .profile-email a {
+  color: #3897f0;
+  text-decoration: none;
+}
+
+/*Profile NavBar*/
+
+.profile-navbar {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #e3e1e1;
+  margin: 0 55px;
+  margin-top: 35px;
+}
+
+.profile-navbar a {
+  color: #999;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0 15px;
+  font-size: 14px;
+  font-weight: 540;
+}
+
+/*Project Profile*/
+
+.project-list {
+  padding: 0 55px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: row;
+  min-height: 224px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e3e1e1;
+}
+
+.project-card-description {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-card-description a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #1e5589;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.project-card-description p {
+  color: #999;
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.project-card-description span {
+  font-weight: 600;
+}
+
+.project-carousel-container {
+  flex: 3;
+  text-align: left;
+  max-width: 800px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.project-carousel-container .card-image-background {
+  display: inline-block;
+}
+
+/*Design Form*/
+.modal-content.form {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+}
+
+.form-title {
+  flex: 1;
+}
+
+.form-title h1 {
+  font-size: 24px;
+  border-bottom: 1px solid #e3e1e1;
+  color: #555;
+  padding-bottom: 18px;
+  margin-bottom: 0px;
+}
+
+.form-content {
+  flex: 3;
+  border-bottom: 1px solid #e3e1e1;
+  padding: 40px 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+.image-upload {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-upload div:nth-child(2) {
+  background-color: #efefef;
+  border-radius: 10px;
+  border-style: none;
+  height: 200px;
+  width: 350px;
+  font-weight: 600;
+  color: #555555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.image-upload img {
+  top: 0;
+  left: 0;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  height: 50px;
+  width: 80px;
+  border-radius: 5px;
+}
+
+.images-uploaded {
+  display: flex;
+  align-items: flex-start;
+}
+
+.input-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-text input,
+.input-text textarea {
+  border: 1px solid #efefef;
+  border-radius: 4px;
+  cursor: text;
+  padding: 10px 14px;
+  background-color: #efefef;
+  font-weight: 600;
+  color: #b5b5b5;
+  font-size: 16px;
+  margin-bottom: 20px;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+.input-text textarea:focus,
+.input-text input:focus {
+  background-color: #fff;
+  font-weight: 400;
+  color: #555555;
+}
+
+.form-submit-section {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.form-submit-section button,
+.form-submit-section input {
+  padding: 0 24px;
+  cursor: pointer;
+  background: #3897f0;
+  border-color: #3897f0;
+  color: #fff;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  text-transform: uppercase;
+}
+
+.project-form {
+  display: flex;
+  flex-direction: column;
 }

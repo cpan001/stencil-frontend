@@ -10,7 +10,6 @@ class CommentCard extends React.Component {
     upvoteCommentAPI(this.props.id, { comment: "upvote" });
   };
   render() {
-    console.log(this.props, "in comments");
     return (
       <div className="comment-card">
         <span>{this.props.user.name}</span>

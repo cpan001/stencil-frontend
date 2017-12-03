@@ -12,7 +12,6 @@ function ProjectCardDisplay(props) {
         collabsNum={props.jointusers.length}
       />
       <CardImages designs={props.designs} />
-      <hr />
     </div>
   );
 }

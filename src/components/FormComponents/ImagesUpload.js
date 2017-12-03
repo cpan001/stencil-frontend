@@ -38,11 +38,18 @@ export default class ImagesUpload extends React.Component {
         alt=""
       />
     ));
+    console.log(this.props.images);
     return (
-      <div>
-        {images}
-        <Dropzone multiple={true} accept="image/*" onDrop={this.onImageDrop}>
-          <p>Drop an image or click to select a file to upload</p>
+      <div className="image-upload">
+        <div className="images-uploaded">{images} </div>
+
+        <Dropzone
+          className="dropzone"
+          multiple={true}
+          accept="image/*"
+          onDrop={this.onImageDrop}
+        >
+          <p>Drag or Upload Photo(s)</p>
         </Dropzone>
       </div>
     );

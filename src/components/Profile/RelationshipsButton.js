@@ -15,9 +15,10 @@ export default class RelationshipsButton extends React.Component {
   render() {
     const formOpen = this.state.open ? "open" : null;
     return (
-      <div>
+      <div className="relationships-button">
         <div onClick={this.handleClick}>
-          {this.props.people.length} {this.props.text}
+          <span className="actions-num">{this.props.people.length}</span>{" "}
+          {this.props.text}
         </div>
         <div className={`card-modal form ${formOpen}`}>
           <div className="modal-content">

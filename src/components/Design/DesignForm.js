@@ -25,7 +25,8 @@ class DesignForm extends React.Component {
     }
   };
 
-  handleNextClick = () => {
+  handleNextClick = e => {
+    e.preventDefault();
     this.setState({ next: true });
   };
 
@@ -132,71 +133,85 @@ class DesignForm extends React.Component {
     return (
       <div>
         <div className={`card-modal form open`}>
-          <div className="modal-content">
-            <Link to="/designs" onClick={this.handleCloseClick}>
-              &times;
-            </Link>
+          <Link to="/designs" onClick={this.handleCloseClick}>
+            &times;
+          </Link>
+          <div className="modal-content form">
             <form onSubmit={this.handleSubmit}>
-              <h1>Add Design</h1>
-              <InputBox
-                id="title"
-                name="title"
-                placeholder="Enter title"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.design.title}
-              />
-              <InputBox
-                id="description"
-                name="description"
-                placeholder="Enter description"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.design.description}
-              />
-              <InputBox
-                id="url"
-                name="url"
-                placeholder="Enter url"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.design.url}
-              />
-              <InputBox
-                id="code"
-                name="code"
-                placeholder="Enter code"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.design.code}
-              />
-              <br />
-              Tags:{" "}
-              <TagsInput
-                onTagChange={this.handleTagChange}
-                tags={this.state.design.tags}
-              />
-              <br />
-              Images:{" "}
-              <ImagesUpload
-                onUpload={this.handleImagesUpload}
-                images={this.state.design.images}
-              />
-              <br />
-              <input
-                type="button"
-                value="Next"
-                onClick={this.handleNextClick}
-              />
+              <div className="form-title">
+                <h1>Add Design</h1>
+              </div>
               {this.state.next ? (
-                <ProjectForm
-                  onProjectChange={this.handleChange}
-                  project={this.state.design.project}
-                  userId={this.props.userId}
-                />
-              ) : null}
-              <br />
-              <input type="submit" value="Create" />
+                <div className="form-content">
+                  <ProjectForm
+                    onProjectChange={this.handleChange}
+                    project={this.state.design.project}
+                    userId={this.props.userId}
+                  />
+                </div>
+              ) : (
+                <div className="form-content">
+                  <ImagesUpload
+                    onUpload={this.handleImagesUpload}
+                    images={this.state.design.images}
+                  />
+                  <div className="input-text">
+                    {" "}
+                    <InputBox
+                      className="input-focus"
+                      id="title"
+                      name="title"
+                      placeholder="Enter title"
+                      type="text"
+                      onChange={this.handleChange}
+                      value={this.state.design.title}
+                    />
+                    <textarea
+                      className="input-focus"
+                      id="description"
+                      name="description"
+                      cols="30"
+                      placeholder="Enter description"
+                      rows="4"
+                      onChange={e =>
+                        this.handleChange("description", e.target.value)}
+                      value={this.state.design.description}
+                    />
+                    <InputBox
+                      className="input-focus"
+                      id="url"
+                      name="url"
+                      placeholder="Enter url"
+                      type="text"
+                      onChange={this.handleChange}
+                      value={this.state.design.url}
+                    />
+                    <InputBox
+                      className="input-focus"
+                      id="code"
+                      name="code"
+                      placeholder="Enter code"
+                      type="text"
+                      onChange={this.handleChange}
+                      value={this.state.design.code}
+                    />
+                    <TagsInput
+                      onTagChange={this.handleTagChange}
+                      tags={this.state.design.tags}
+                    />
+                  </div>
+                </div>
+              )}
+
+              <div className="form-submit-section">
+                {!this.state.next ? (
+                  <button type="button" onClick={this.handleNextClick}>
+                    Next
+                  </button>
+                ) : (
+                  <input type="submit" value="Create" />
+                )}
+              </div>
             </form>
           </div>
         </div>

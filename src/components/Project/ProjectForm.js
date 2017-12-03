@@ -24,9 +24,8 @@ class ProjectForm extends React.Component {
 
   render() {
     const createProjectForm = !this.state.createProject ? (
-      <div>
-        <h1>Save to Project</h1>
-        Choose from existing project{" "}
+      <div className="project-form">
+        <span>Choose Project</span>
         <select
           id="project"
           name="project"
@@ -52,7 +51,7 @@ class ProjectForm extends React.Component {
         />
       </div>
     ) : (
-      <div>
+      <div className="project-form">
         <h1>Create Project</h1>
         <InputBox
           id="project"

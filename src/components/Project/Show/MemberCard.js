@@ -1,6 +1,5 @@
 import React from "react";
 import ProfileImage from "../../FormComponents/ProfileImage";
-import jwt_decode from "jwt-decode";
 
 function MemberCard(props) {
   const showButton = props.canRemoveMembers ? (
