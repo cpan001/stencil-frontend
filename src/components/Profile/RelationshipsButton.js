@@ -1,5 +1,6 @@
 import React from "react";
 import PersonListCard from "./PersonListCard";
+import { Link } from "react-router-dom";
 
 export default class RelationshipsButton extends React.Component {
   state = {
@@ -22,8 +23,8 @@ export default class RelationshipsButton extends React.Component {
           {this.props.text}
         </div>
         <div className={`card-modal form ${formOpen}`}>
-          <div className="modal-content">
-            <span onClick={this.handleCloseClick}>&times;</span>
+          <a onClick={this.handleCloseClick}>&times;</a>
+          <div className="modal-content profile">
             {this.props.people.map(person => (
               <PersonListCard key={person.id} {...person} />
             ))}

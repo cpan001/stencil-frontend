@@ -959,3 +959,39 @@ body {
 .project-designs-num.members {
   cursor: pointer;
 }
+
+/*Person Card */
+.modal-content.profile {
+  width: 20%;
+  padding: 0px 0;
+  display: flex;
+  flex-direction: column;
+  margin: 15% auto;
+}
+
+.person-card {
+  padding: 10px;
+  border-bottom: solid 1px #efefef;
+}
+
+.modal-content.profile .person-card:last-child {
+  border-bottom: 0px;
+}
+
+.person-card a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  font-size: 16px;
+  color: #555;
+  font-weight: 600;
+}
+
+.person-card a:visited {
+  color: #555;
+}
+
+.person-card img {
+  margin-right: 10px;
+}

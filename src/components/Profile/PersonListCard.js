@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ProfileImage from "../FormComponents/ProfileImage";
 
-//fix link and allow people to follow or unfollow
 export default class PersonListCard extends React.Component {
   render() {
     return (
-      <div>
-        <img src={this.props.avatar} alt="" width="100px" height="100px" />
-        <Link to={`/users/${this.props.id}`}>{this.props.name}</Link>
+      <div className="person-card">
+        <Link to={`/users/${this.props.id}`}>
+          <ProfileImage image={this.props.avatar} />
+          {this.props.name}
+        </Link>
       </div>
     );
   }
