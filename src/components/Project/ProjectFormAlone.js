@@ -68,33 +68,47 @@ export default class ProjectFormAlone extends React.Component {
     return (
       <div>
         <div className="card-modal form open">
-          <div className="modal-content">
-            <Link to="/designs" onClick={this.handleCloseClick}>
-              &times;
-            </Link>
+          <Link to="/designs" onClick={this.handleCloseClick}>
+            &times;
+          </Link>
+          <div className="modal-content form">
             <form onSubmit={this.handleSubmit}>
-              <h1>Add Project</h1>
-              <InputBox
-                id="title"
-                name="title"
-                placeholder="Enter title"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.project.title}
-              />
-              <InputBox
-                id="description"
-                name="description"
-                placeholder="Enter description"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.project.description}
-              />
-              <RSelect
-                onSelectChange={this.handleSelectChange}
-                value={this.state.project.collaborators}
-              />
-              <input type="submit" value="Create" />
+              <div className="form-title">
+                <h1>Add Project</h1>
+              </div>
+              <div className="form-content">
+                <div className="input-text project-alone">
+                  <InputBox
+                    id="title"
+                    name="title"
+                    placeholder="Enter title"
+                    type="text"
+                    onChange={this.handleChange}
+                    value={this.state.project.title}
+                  />
+                  <textarea
+                    className="input-focus"
+                    id="description"
+                    name="description"
+                    cols="30"
+                    placeholder="Enter description"
+                    rows="4"
+                    onChange={e =>
+                      this.handleChange("description", e.target.value)}
+                    value={this.state.project.description}
+                  />
+
+                  <RSelect
+                    onSelectChange={this.handleSelectChange}
+                    value={this.state.project.collaborators}
+                    text={"Add Collaborators"}
+                  />
+                </div>
+              </div>
+              <div className="form-submit-section">
+                {" "}
+                <input type="submit" value="Create" />
+              </div>
             </form>
           </div>
         </div>

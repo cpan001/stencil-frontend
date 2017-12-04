@@ -198,6 +198,7 @@ class DesignForm extends React.Component {
                     <TagsInput
                       onTagChange={this.handleTagChange}
                       tags={this.state.design.tags}
+                      text="Add Tags"
                     />
                   </div>
                 </div>

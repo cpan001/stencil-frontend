@@ -14,6 +14,7 @@ export default class TagsInput extends React.Component {
           options={this.state.options}
           onChange={value => this.props.onTagChange(value)}
           value={this.props.tags}
+          placeholder={this.props.text}
         />
       </div>
     );

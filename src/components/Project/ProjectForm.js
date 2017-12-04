@@ -25,42 +25,47 @@ class ProjectForm extends React.Component {
   render() {
     const createProjectForm = !this.state.createProject ? (
       <div className="project-form">
-        <span>Choose Project</span>
-        <select
-          id="project"
-          name="project"
-          value={this.props.project}
-          onChange={e => {
-            this.props.onProjectChange(e.target.id, e.target.value);
-          }}
-        >
-          <option value="" />
-          {this.state.currentUserProjects
-            ? this.state.currentUserProjects.map(p => (
-                <option value={p.title} key={p.id}>
-                  {p.title}
-                </option>
-              ))
-            : null}
-        </select>
+        <span>
+          <span>Choose Project</span>
+          <select
+            id="project"
+            name="project"
+            value={this.props.project}
+            onChange={e => {
+              this.props.onProjectChange(e.target.id, e.target.value);
+            }}
+          >
+            <option value="" />
+            {this.state.currentUserProjects
+              ? this.state.currentUserProjects.map(p => (
+                  <option value={p.title} key={p.id}>
+                    {p.title}
+                  </option>
+                ))
+              : null}
+          </select>
+        </span>
         <br />
-        <input
-          type="button"
-          value="Create Project"
+        <div
+          className="create-project-button"
           onClick={this.handleCreateProjectClick}
-        />
+        >
+          <i class="material-icons">add_circle</i>
+          <span>Create Project</span>
+        </div>
       </div>
     ) : (
       <div className="project-form">
-        <h1>Create Project</h1>
-        <InputBox
-          id="project"
-          name="project"
-          placeholder="Project Name"
-          type="text"
-          onChange={this.props.onProjectChange}
-          value={this.props.project}
-        />
+        <div className="input-text project">
+          <InputBox
+            id="project"
+            name="project"
+            placeholder="New Project Name"
+            type="text"
+            onChange={this.props.onProjectChange}
+            value={this.props.project}
+          />
+        </div>
       </div>
     );
     return createProjectForm;

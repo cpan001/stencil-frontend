@@ -696,6 +696,8 @@ body {
   padding: 40px 100px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .image-upload {
@@ -785,4 +787,44 @@ body {
 .project-form {
   display: flex;
   flex-direction: column;
+}
+
+.project-form span span {
+  margin-right: 10px;
+  font-weight: 600;
+  color: #555555;
+}
+
+.create-project-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.create-project-button i {
+  margin-right: 5px;
+  font-size: 40px;
+  color: #3897f0;
+}
+
+.create-project-button span {
+  font-weight: 600;
+  color: #555555;
+}
+
+.input-text.project-alone input,
+.input-text.project-alone textarea {
+  width: 400px;
+}
+
+.input-text.project-alone .section {
+  width: 428px;
+}
+
+.input-text.project-alone {
+  display: flex;
+  align-items: center;
+  padding: 20px 150px;
 }

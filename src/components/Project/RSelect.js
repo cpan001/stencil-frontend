@@ -32,11 +32,12 @@ export default class RSelect extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>Collaborators</p>
+      <div className="section">
         <Async
+          className="rselect"
           name="form-field-name"
           loadOptions={this.loadOptions}
+          placeholder={this.props.text}
           multi
           onChange={this.onChange}
           value={this.props.value}
