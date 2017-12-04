@@ -35,6 +35,7 @@ class ProfileContainer extends React.Component {
                       userId={params.user_id}
                       user={this.props.user}
                       viewerId={this.props.viewerId}
+                      followers={this.props.followers}
                     />
                     <ProfileNavBar userId={params.user_id} />
                     <DesignList {...props} designs={this.props.user.designs} />
@@ -56,6 +57,7 @@ class ProfileContainer extends React.Component {
                     userId={params.user_id}
                     user={this.props.user}
                     viewerId={this.props.viewerId}
+                    followers={this.props.followers}
                   />{" "}
                   <ProfileNavBar userId={params.user_id} />
                   <ProjectList {...props} />

@@ -5,7 +5,7 @@ import ProfileImage from "../FormComponents/ProfileImage";
 
 export default class ProfileInfo extends React.Component {
   render() {
-    console.log(this.props.user, "in profile info");
+    // console.log(this.props.user, "in profile info");
     return (
       <div className="profile-info">
         <div className="profile-image-container">
@@ -17,7 +17,6 @@ export default class ProfileInfo extends React.Component {
             <FollowershipButton
               userId={this.props.userId}
               followers={this.props.user.followers}
-              viewerId={this.props.viewerId}
             />
           </div>
           <div className="profile-actions">
@@ -44,7 +43,7 @@ export default class ProfileInfo extends React.Component {
             <div className="design-actions-empty-container" />
           </div>
           <div className="profile-email">
-            <i class="material-icons">mail_outline</i>
+            <i className="material-icons">mail_outline</i>
             <a href={`mailto:${this.props.user.email}`}>
               {this.props.user.email}
             </a>

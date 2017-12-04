@@ -12,7 +12,7 @@ export default function users(
     case "DELETE_FOLLOWER":
       const updateUser = { ...state.user };
       updateUser["followers"] = updateUser["followers"].filter(
-        fol => fol.id === parseInt(action.payload.id, 10)
+        fol => fol.id !== parseInt(action.payload.id, 10)
       );
       return Object.assign({}, state, { user: updateUser });
     case "LOGIN_ERROR":

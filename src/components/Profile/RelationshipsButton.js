@@ -13,6 +13,7 @@ export default class RelationshipsButton extends React.Component {
     this.setState({ open: false });
   };
   render() {
+    const props = this.props.people;
     const formOpen = this.state.open ? "open" : null;
     return (
       <div className="relationships-button">
@@ -23,7 +24,9 @@ export default class RelationshipsButton extends React.Component {
         <div className={`card-modal form ${formOpen}`}>
           <div className="modal-content">
             <span onClick={this.handleCloseClick}>&times;</span>
-            {this.props.people.map(person => <PersonListCard {...person} />)}
+            {this.props.people.map(person => (
+              <PersonListCard key={person.id} {...person} />
+            ))}
           </div>
         </div>
       </div>

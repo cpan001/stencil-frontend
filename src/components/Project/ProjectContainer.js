@@ -12,9 +12,17 @@ class ProjectContainer extends React.Component {
   render() {
     const showProject = this.props.project["creator"] ? (
       <div>
-        <ProjectProfileContainer project={this.props.project} {...this.props} />
-        <hr />
-        <DesignList designs={this.props.project.designs} />
+        <div className="main-container">
+          <div className="empty-container" />
+          <div className="content-container">
+            <ProjectProfileContainer
+              project={this.props.project}
+              {...this.props}
+            />
+            <DesignList designs={this.props.project.designs} />
+          </div>
+          <div className="empty-container" />
+        </div>
       </div>
     ) : null;
     return showProject;

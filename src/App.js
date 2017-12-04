@@ -54,7 +54,7 @@ class App extends Component {
           path="/logout"
           render={props => {
             this.props.logOutUser();
-            return <Redirect to="/signin" />;
+            return <Redirect to="/" />;
           }}
         />
         <Switch>

@@ -7,13 +7,13 @@ import jwt_decode from "jwt-decode";
 
 class FollowershipButton extends React.Component {
   state = {
-    following: false
+    following: ""
   };
 
   handleClick = e => {
     const token = localStorage.getItem("jwt");
     const viewerId = token ? jwt_decode(token)["user_id"] : null;
-    if (e.target.value === "follow") {
+    if (e.target.value === "Follow") {
       this.props.addFollower({ id: viewerId });
       this.setState({ following: true });
       createRelationship(this.props.userId, {
@@ -27,18 +27,44 @@ class FollowershipButton extends React.Component {
       );
     }
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.user.followers) {
+      const testprops = this.props;
+      const token = localStorage.getItem("jwt");
+      const viewerId = token ? jwt_decode(token)["user_id"] : null;
+      const followers = nextProps.user.followers;
+      const following = followers.some(f => f.id === parseInt(viewerId, 10));
+      if (this.state.following === "") {
+        return this.setState({ following });
+      } else if (!following && this.state.following) {
+        return this.setState({ following: false });
+      } else {
+        return this.setState({ following: true });
+      }
+    }
+  }
+
   render() {
-    const token = localStorage.getItem("jwt");
-    const viewerId = token ? jwt_decode(token)["user_id"] : null;
-    const following = this.props.followers
-      ? this.props.followers.some(f => f.id === parseInt(viewerId, 10))
-      : null;
-    const value = following || this.state.following ? "Following" : "Follow";
-    return <input type="button" value={value} onClick={this.handleClick} />;
+    return (
+      <input
+        type="button"
+        value={this.state.following ? "Following" : "Follow"}
+        onClick={this.handleClick}
+      />
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  if (state.users.user) {
+    return { user: state.users.user };
+  } else {
+    return { user: {} };
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addFollower, deleteFollower }, dispatch);
 }
-export default connect(null, mapDispatchToProps)(FollowershipButton);
+export default connect(mapStateToProps, mapDispatchToProps)(FollowershipButton);

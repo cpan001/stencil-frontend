@@ -59,6 +59,7 @@ class DesignForm extends React.Component {
         images: []
       }
     });
+    this.props.history.goBack();
   };
 
   handleChange = (id, value) => {
@@ -129,7 +130,7 @@ class DesignForm extends React.Component {
   };
 
   render() {
-    console.log("hit designform");
+    console.log("hit designform", this.props.history);
     return (
       <div>
         <div className={`card-modal form open`}>

@@ -51,33 +51,40 @@ class MembersCard extends React.Component {
           &times;
         </Link>
         <div className="modal-content">
-          <h1>Members</h1>
-          {groupMember ? (
-            <div className="add-members">
-              <RSelect
-                value={this.state.newCollaborators}
-                onSelectChange={this.handleSelectChange}
+          <div className="form-title">
+            {" "}
+            <h1>Members</h1>
+          </div>
+          <div className="form-content">
+            {groupMember ? (
+              <div className="add-members">
+                <RSelect
+                  value={this.state.newCollaborators}
+                  onSelectChange={this.handleSelectChange}
+                />
+                <input
+                  type="button"
+                  value="Add New Member(s)"
+                  onClick={this.handleAddMember}
+                />
+              </div>
+            ) : null}
+          </div>
+          <div className="form-submit-section">
+            <p>Creator</p>
+            <MemberCard person={this.props.creator} owner={true} />
+            <hr />
+            Other Members
+            <hr />
+            {this.props.collaborators.map(c => (
+              <MemberCard
+                key={c.id}
+                person={c}
+                onRemoveMember={this.handleRemoveMember}
+                canRemoveMembers={groupMember}
               />
-              <input
-                type="button"
-                value="Add New Member(s)"
-                onClick={this.handleAddMember}
-              />
-            </div>
-          ) : null}
-          <p>Creator</p>
-          <MemberCard person={this.props.creator} owner={true} />
-          <hr />
-          Other Members
-          <hr />
-          {this.props.collaborators.map(c => (
-            <MemberCard
-              key={c.id}
-              person={c}
-              onRemoveMember={this.handleRemoveMember}
-              canRemoveMembers={groupMember}
-            />
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     );

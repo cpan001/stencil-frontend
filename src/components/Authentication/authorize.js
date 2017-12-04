@@ -8,7 +8,6 @@ const authorize = RenderedComponent => {
       const token = localStorage.getItem("jwt");
       if (token) {
         const userId = jwt_decode(token)["user_id"];
-        console.log(userId, "in testing jwt decode");
         if (
           (userId && this.props.location.pathname === "/signin") ||
           (userId && this.props.location.pathname === "/signup")

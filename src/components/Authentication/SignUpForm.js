@@ -1,10 +1,11 @@
 import React from "react";
-import Dropzone from "react-dropzone";
 import request from "superagent";
 import InputBox from "../FormComponents/InputBox";
+import ImageUpload from "../FormComponents/ImageUpload";
 // import { createUser } from "../../services/index";
 import { signUpUser } from "../../actions/users";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const upload_preset = "kkncgfpk";
 const upload_url = "https://api.cloudinary.com/v1_1/dzmtr75qy/upload";
@@ -75,64 +76,59 @@ class SignUpForm extends React.Component {
   };
 
   render() {
-    const uploadedImageSection =
-      this.state.uploadedFileCloudinaryUrl === "" ? (
-        <Dropzone multiple={false} accept="image/*" onDrop={this.onImageDrop}>
-          <p>Drop an image or click to select a file to upload</p>
-        </Dropzone>
-      ) : (
-        <img
-          src={this.state.uploadedFileCloudinaryUrl}
-          alt="Profile"
-          height="200px"
-          width="200px"
-        />
-      );
     return (
-      <div>
-        <h1>Sign Up</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Name: </label>
-          <InputBox
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Enter name"
-            onChange={this.handleChange}
-            value={this.state.name}
-          />
-          <br />
-          <label htmlFor="email">Email: </label>
-          <InputBox
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Enter email"
-            onChange={this.handleChange}
-            value={this.state.email}
-          />
-          <br />
-          <label htmlFor="password">Password: </label>
-          <InputBox
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Enter password"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
-          <br />
-          <label htmlFor="avatar">Avatar: </label>
-          {uploadedImageSection}
-          <input
-            type="hidden"
-            name="avatar"
-            value={this.state.uploadedFileCloudinaryUrl}
-          />
-          <br />
-          <br />
-          <input type="submit" value="Create My Account" />
-        </form>
+      <div className="card-modal">
+        <Link to="/">&times;</Link>
+        <div className="modal-content signup">
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-title">
+              <h1>Sign Up</h1>
+            </div>
+            <div className="form-content">
+              <ImageUpload
+                imageURL={this.state.uploadedFileCloudinaryUrl}
+                onImageDrop={this.onImageDrop}
+              />
+              <div className="input-text signup">
+                <InputBox
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Enter name"
+                  onChange={this.handleChange}
+                  value={this.state.name}
+                />
+
+                <InputBox
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Enter email"
+                  onChange={this.handleChange}
+                  value={this.state.email}
+                />
+
+                <InputBox
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Enter password"
+                  onChange={this.handleChange}
+                  value={this.state.password}
+                />
+                <input
+                  type="hidden"
+                  name="avatar"
+                  value={this.state.uploadedFileCloudinaryUrl}
+                />
+              </div>
+            </div>
+            <div className="form-submit-section">
+              {" "}
+              <input type="submit" value="Create" />
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
