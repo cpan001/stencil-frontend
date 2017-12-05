@@ -30,7 +30,6 @@ class FollowershipButton extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.followers) {
-      const testprops = this.props;
       const token = localStorage.getItem("jwt");
       const viewerId = token ? jwt_decode(token)["user_id"] : null;
       const followers = nextProps.user.followers;

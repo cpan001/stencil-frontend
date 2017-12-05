@@ -29,7 +29,7 @@ export function signUpUser(user) {
         }
       })
       .then(userData => {
-        dispatch({ type: "SIGNUP_USER", payload: userData });
+        userData ? dispatch({ type: "SIGNUP_USER", payload: userData }) : null;
       });
   };
 }
@@ -45,7 +45,7 @@ export function loginUser(user) {
         }
       })
       .then(userData => {
-        dispatch({ type: "LOGIN_USER", payload: userData });
+        userData ? dispatch({ type: "LOGIN_USER", payload: userData }) : null;
       });
   };
 }

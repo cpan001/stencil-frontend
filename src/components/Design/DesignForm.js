@@ -106,31 +106,39 @@ class DesignForm extends React.Component {
     }
   };
 
+  validateForm = design => {
+    return design.title && design.url && design.images.length > 0;
+  };
+
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addDesign(this.state.design);
-    const newApiDesign = { ...this.state.design };
-    newApiDesign["images"] = newApiDesign["images"].map(
-      image => image.filename
-    );
-    addDesignAPI(newApiDesign, this.props.userId);
-    this.setState({
-      design: {
-        title: "",
-        description: "",
-        url: "",
-        code: "",
-        tags: [],
-        project: "",
-        images: []
-      }
-    });
-    this.props.history.push("/designs");
+    if (this.validateForm(this.state.design)) {
+      const newApiDesign = { ...this.state.design };
+      newApiDesign["images"] = newApiDesign["images"].map(
+        image => image.filename
+      );
+      addDesignAPI(newApiDesign, this.props.userId).then(json => {
+        if (!json.errors) {
+          this.props.history.push("/designs");
+          this.setState({
+            design: {
+              title: "",
+              description: "",
+              url: "",
+              code: "",
+              tags: [],
+              project: "",
+              images: []
+            }
+          });
+        }
+      });
+    }
     // this.props.history.goBack();
   };
 
   render() {
-    console.log("hit designform", this.props.history);
+    // console.log("hit designform", this.props.history);
     return (
       <div>
         <div className={`card-modal form open`}>

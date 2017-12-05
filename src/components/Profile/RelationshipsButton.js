@@ -1,6 +1,5 @@
 import React from "react";
 import PersonListCard from "./PersonListCard";
-import { Link } from "react-router-dom";
 
 export default class RelationshipsButton extends React.Component {
   state = {
@@ -14,7 +13,6 @@ export default class RelationshipsButton extends React.Component {
     this.setState({ open: false });
   };
   render() {
-    const props = this.props.people;
     const formOpen = this.state.open ? "open" : null;
     return (
       <div className="relationships-button">
