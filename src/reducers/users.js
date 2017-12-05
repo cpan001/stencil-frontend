@@ -19,6 +19,7 @@ export default function users(
       return Object.assign({}, state, { loggedIn: false });
     case "LOGIN_USER":
       localStorage.setItem("jwt", action.payload.jwt);
+      document.cookie = `jwt=${action.payload.jwt}`;
       return Object.assign(
         {},
         state,
@@ -27,6 +28,7 @@ export default function users(
       );
     case "LOGOUT_USER":
       localStorage.removeItem("jwt");
+      document.cookie = `jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
       return Object.assign({}, state, { loggedIn: false }, { viewer: null });
     case "SIGNUP_USER":
       localStorage.setItem("jwt", action.payload.jwt);

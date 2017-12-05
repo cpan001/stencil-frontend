@@ -1,8 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
   const button = document.getElementById("button");
   const container = document.getElementById("container");
-  let postData = { images: { filename: "" }, url: "" };
+  const title = document.getElementById("title");
+  let postData = {
+    image: { filename: "" },
+    url: "",
+    title: "",
+    creator_id: 1,
+    jwt: ""
+  };
+  let token;
+
+  function getCookies(domain, name, callback) {
+    chrome.cookies.get({ url: domain, name: name }, function(cookie) {
+      token = cookie.value;
+      postData["jwt"] = cookie.value;
+      const text = document.createElement("p");
+      text.innerText = `cookie ${cookie.value}`;
+      container.appendChild(text);
+    });
+  }
+
   button.addEventListener("click", () => {
+    getCookies("http://localhost:3001", "jwt");
+
     chrome.tabs.query(
       {
         active: true,
@@ -11,29 +32,33 @@ document.addEventListener("DOMContentLoaded", () => {
       function(tabs) {
         var tabURL = tabs[0].url;
         postData["url"] = tabURL;
+        postData["title"] = title.value;
         const p = document.createElement("p");
         p.innerText = tabURL;
         container.appendChild(p);
       }
     );
+
     chrome.tabs.captureVisibleTab(null, null, function(dataUrl) {
       const image = document.createElement("img");
       image.src = dataUrl;
-      postData["images"]["filename"] = dataUrl;
-      container.appendChild(image);
+      postData["image"]["filename"] = dataUrl;
+      // container.appendChild(image);
       const formData = document.createElement("p");
-      formData.innerText = `${postData},${postData.url}, ${postData.images
-        .filename}, ${localStorage.getItem("jwt")}`;
+      // formData.innerText = `title:  ${postData.title}, object: ${postData},${postData.url}, ${postData
+      //   .image.filename}`;
+
+      formData.innerText = `chrome:`;
       container.appendChild(formData);
-      // fetch("http://localhost:3000/api/v1/users/4/designs", {
-      //   method: "POST",
-      //   headers: {
-      //     Accept: "application/json",
-      //     "Content-Type": "application/json",
-      //     Authorization: `Bearer ${localStorage.getItem("jwt")}`
-      //   },
-      //   body: JSON.stringify(postData)
-      // });
+      fetch("http://localhost:3000/api/v1/designs/save", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(postData)
+      });
     });
   });
 });
