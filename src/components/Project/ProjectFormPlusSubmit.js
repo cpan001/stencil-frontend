@@ -24,7 +24,10 @@ export default class ProjectFormPlusSubmit extends React.Component {
             onProjectChange={this.handleChange}
             project={this.state.project}
           />
-          <input type="submit" value="Save" />
+
+          <div className="form-submit-section">
+            <input type="submit" value="Save" />
+          </div>
         </form>
       </div>
     );

@@ -50,40 +50,54 @@ class MembersCard extends React.Component {
         <Link to={`/projects/${projectId}`} onClick={this.props.onCloseClick}>
           &times;
         </Link>
-        <div className="modal-content">
+        <div className="modal-content members">
           <div className="form-title">
             {" "}
             <h1>Members</h1>
           </div>
-          <div className="form-content">
+          <div className="form-content members">
             {groupMember ? (
               <div className="add-members">
                 <RSelect
                   value={this.state.newCollaborators}
                   onSelectChange={this.handleSelectChange}
+                  text="Add New Members"
                 />
                 <input
+                  id="add-new-members-button"
                   type="button"
-                  value="Add New Member(s)"
+                  value="Add"
                   onClick={this.handleAddMember}
                 />
               </div>
             ) : null}
           </div>
-          <div className="form-submit-section">
-            <p>Creator</p>
-            <MemberCard person={this.props.creator} owner={true} />
-            <hr />
-            Other Members
-            <hr />
-            {this.props.collaborators.map(c => (
-              <MemberCard
-                key={c.id}
-                person={c}
-                onRemoveMember={this.handleRemoveMember}
-                canRemoveMembers={groupMember}
-              />
-            ))}
+          <div className="form-submit-section members">
+            <div className="members-section">
+              <div className="admin-type">
+                <h1>Creator</h1>
+              </div>
+              <div className="members-list">
+                {" "}
+                <MemberCard person={this.props.creator} owner={true} />
+              </div>
+            </div>
+            <div className="members-section">
+              <div className="admin-type">
+                <h1>Other Members</h1>
+              </div>
+              <div className="members-list">
+                {" "}
+                {this.props.collaborators.map(c => (
+                  <MemberCard
+                    key={c.id}
+                    person={c}
+                    onRemoveMember={this.handleRemoveMember}
+                    canRemoveMembers={groupMember}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

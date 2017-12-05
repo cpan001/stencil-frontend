@@ -23,6 +23,7 @@ export default class ProjectFormAlone extends React.Component {
         collaborators: []
       }
     });
+    this.props.history.goBack();
   };
 
   handleSelectChange = collaborators => {

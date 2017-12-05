@@ -1,9 +1,11 @@
 import React from "react";
 import ProfileImage from "../../FormComponents/ProfileImage";
+import { Link } from "react-router-dom";
 
 function MemberCard(props) {
   const showButton = props.canRemoveMembers ? (
     <input
+      className="remove-member"
       data-id={props.person.id}
       type="button"
       value="remove"
@@ -12,9 +14,13 @@ function MemberCard(props) {
   ) : null;
   return (
     <div className="member">
-      <ProfileImage image={props.person.avatar} />
-      <span data-id={props.person.id}>{props.person.name}</span>
-      {props.owner ? null : showButton}
+      <div className="member-profile">
+        <Link to={`/users/${props.person.id}`}>
+          <ProfileImage image={props.person.avatar} />{" "}
+        </Link>
+        <span data-id={props.person.id}>{props.person.name}</span>
+      </div>
+      <div className="member-button">{props.owner ? null : showButton}</div>
     </div>
   );
 }

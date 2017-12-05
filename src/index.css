@@ -563,9 +563,89 @@ body {
 }
 
 /*My Project View*/
+/*Members Card*/
 
 .card-modal.members {
   z-index: 100;
+}
+
+.modal-content.members {
+  width: 40%;
+  padding-bottom: 0;
+}
+
+.add-members {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.add-members > div {
+  width: 350px;
+}
+
+#add-new-members-button {
+  padding: 0 16px;
+  cursor: pointer;
+  background: #3897f0;
+  border-color: #3897f0;
+  color: #fff;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 32px;
+  margin-left: 16px;
+}
+
+.form-submit-section.members {
+  padding: 0;
+}
+
+.members-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-type {
+  border-bottom: solid 1px #dbdbdb;
+}
+
+.admin-type h1 {
+  color: #555;
+  font-size: 17px;
+  text-align: left;
+  padding-left: 25px;
+}
+
+.member {
+  padding: 10px 25px;
+  display: flex;
+  flex-direction: row;
+  border-top: solid 1px #dbdbdb;
+}
+
+.member-profile {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.member-profile img {
+  margin-right: 10px;
+}
+
+.member-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.member-button input.remove-member {
+  font-size: 15px;
+  padding: 0 16px;
 }
 
 /*My Profile View*/
@@ -956,7 +1036,7 @@ body {
   background: linear-gradient(140deg, #37b2eb 55%, #0493d6 55%, #0493d6 100%);
 }
 
-.project-designs-num.members {
+.num-box {
   cursor: pointer;
 }
 

@@ -21,8 +21,8 @@ export default class CollaboratorsButton extends React.Component {
       />
     ) : null;
     return (
-      <div className="project-designs-num members" onClick={this.handleClick}>
-        <span className="bold-num members">
+      <div className="project-designs-num " onClick={this.handleClick}>
+        <span className="bold-num members num-box">
           {this.props.collaborators.length + 1}
         </span>
         <span>Members</span>
