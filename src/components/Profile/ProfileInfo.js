@@ -2,10 +2,12 @@ import React from "react";
 import RelationshipsButton from "./RelationshipsButton";
 import FollowershipButton from "./FollowershipButton";
 import ProfileImage from "../FormComponents/ProfileImage";
+import jwt_decode from "jwt-decode";
 
 export default class ProfileInfo extends React.Component {
   render() {
     // console.log(this.props.user, "in profile info");
+    const viewerId = jwt_decode(localStorage.getItem("jwt"))["user_id"];
     return (
       <div className="profile-info">
         <div className="profile-image-container">
@@ -14,10 +16,12 @@ export default class ProfileInfo extends React.Component {
         <div className="profile-description">
           <div className="profile-name">
             <p>{this.props.user.name}</p>
-            <FollowershipButton
-              userId={this.props.userId}
-              followers={this.props.user.followers}
-            />
+            {parseInt(this.props.userId, 10) === viewerId ? null : (
+              <FollowershipButton
+                userId={this.props.userId}
+                followers={this.props.user.followers}
+              />
+            )}
           </div>
           <div className="profile-actions">
             <div className="designs-num">

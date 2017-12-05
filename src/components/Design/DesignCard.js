@@ -53,7 +53,9 @@ class DesignCard extends React.Component {
       <div className="design-card-main">
         <div className="design-title-area">
           <div className="user-image">
-            <ProfileImage image={this.props.design.creator.avatar} />
+            <Link to={`/users/${this.props.design.creator.id}`}>
+              <ProfileImage image={this.props.design.creator.avatar} />
+            </Link>
           </div>
           <div className="design-title">
             <p>{this.props.design.title}</p>
