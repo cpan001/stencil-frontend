@@ -38,7 +38,10 @@ class ProfileContainer extends React.Component {
                       followers={this.props.followers}
                     />
                     <ProfileNavBar userId={params.user_id} />
-                    <DesignList {...props} designs={this.props.user.designs} />
+                    <DesignList
+                      {...props}
+                      designs={this.props.user.likeddesigns}
+                    />
                   </div>
                   <div className="empty-container" />
                 </div>

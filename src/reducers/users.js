@@ -33,6 +33,7 @@ export default function users(
       return Object.assign({}, state, { loggedIn: false }, { viewer: null });
     case "SIGNUP_USER":
       localStorage.setItem("jwt", action.payload.jwt);
+      document.cookie = `jwt=${action.payload.jwt}`;
       return Object.assign(
         {},
         state,

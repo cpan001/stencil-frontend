@@ -123,7 +123,6 @@ class DesignCard extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   const design = state.designs.designs[ownProps.designId];
-  console.log("in mstp");
   if (design && design["likes"]) {
     return { design, likes: design.likes };
   } else {

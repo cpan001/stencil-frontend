@@ -6,14 +6,17 @@ export default class LikeButton extends React.Component {
   };
 
   componentDidMount() {
+    // debugger;
     this.setState({ clicked: this.props.clicked });
   }
 
   handleClick = () => {
     this.setState({ clicked: !this.state.clicked });
     this.props.onLikeButtonClick(this.state.clicked);
+    // debugger;
   };
   render() {
+    // debugger;
     const button = this.state.clicked ? (
       <span className="like-clicked" onClick={this.handleClick}>
         <i className="material-icons design-card-icons">favorite</i>

@@ -54,17 +54,23 @@ export default class ProjectFormAlone extends React.Component {
     }
   };
 
+  validateForm = project => {
+    return project.title;
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     const userId = this.props.userId;
     let project = this.state.project;
     project["collaborators"] = project["collaborators"].map(c => c.value);
-    createAloneProject(userId, project).then(json => {
-      // console.log(json, "in project subit");
-      if (!json.errors) {
-        this.props.history.push(`/projects/${json.id}`);
-      }
-    });
+    if (this.validateForm(this.state.project)) {
+      createAloneProject(userId, project).then(json => {
+        // console.log(json, "in project subit");
+        if (!json.errors) {
+          this.props.history.push(`/projects/${json.id}`);
+        }
+      });
+    }
   };
 
   render() {

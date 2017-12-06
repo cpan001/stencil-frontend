@@ -50,7 +50,7 @@ class ProjectForm extends React.Component {
           className="create-project-button"
           onClick={this.handleCreateProjectClick}
         >
-          <i class="material-icons">add_circle</i>
+          <i className="material-icons">add_circle</i>
           <span>Create Project</span>
         </div>
       </div>

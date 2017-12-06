@@ -3,6 +3,7 @@ body {
   padding: 0;
   font-family: "Lato", sans-serif;
   background-color: #fafafa;
+  cursor: default;
 }
 
 /*Design Card Modal*/
@@ -10,7 +11,7 @@ body {
 .card-modal {
   display: block;
   position: fixed;
-  z-index: 2;
+  z-index: 11;
   left: 0;
   top: 0;
   width: 100%;
@@ -40,6 +41,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   animation: myOpacity 200ms ease-in-out 0s;
+  z-index: 20;
 }
 
 /* The Close Button */
