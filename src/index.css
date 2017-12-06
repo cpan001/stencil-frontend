@@ -10,7 +10,7 @@ body {
 .card-modal {
   display: block;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   left: 0;
   top: 0;
   width: 100%;
@@ -31,11 +31,14 @@ body {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fafafa;
-  margin: 5% auto;
   padding: 10px 0px;
   border: 1px solid #888;
   width: 70%;
   border-radius: 8px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* The Close Button */
@@ -83,12 +86,24 @@ body {
 }
 
 .navbar {
+  animation: myNavBar 2s ease 0s;
   height: 77px;
   background-color: #fff;
   display: flex;
   flex-direction: row;
   align-items: center;
   border-bottom: 1px solid #e6e6e6;
+}
+
+@keyframes myNavBar {
+  0% {
+    transform: translateY(-77px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 .navbar #logo {
@@ -318,10 +333,10 @@ body {
 }
 
 .user-image {
-  flex: 1;
+  flex: 0.7;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .design-title {
@@ -371,11 +386,12 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
+  padding-right: 25px;
 }
 
 .image-carousel img {
   height: 350px;
-  width: 500px;
+  width: 100%;
   border-radius: 4px;
 }
 
@@ -387,7 +403,7 @@ body {
   position: absolute;
   top: 50%;
   left: 0%;
-  transform: translate(25px, 0);
+  transform: translate(10px, 0);
   cursor: pointer;
 }
 
@@ -399,7 +415,7 @@ body {
   position: absolute;
   top: 50%;
   right: 0%;
-  transform: translate(-25px, 0);
+  transform: translate(-35px, 0);
   cursor: pointer;
 }
 
@@ -481,16 +497,21 @@ body {
   align-items: center;
 }
 
+.comment-form {
+  width: 100%;
+}
+
 .comment-form input {
   border-radius: 4px;
   border: 1px solid #efefef;
   cursor: text;
   margin: 10px 0;
   padding: 8px 12px;
-  width: 155%;
+  width: 100%;
   color: #555;
   font-size: 14px;
   background-color: #efefef;
+  box-sizing: border-box;
 }
 
 .comment-card {
@@ -499,7 +520,7 @@ body {
   flex-direction: row;
   align-items: baseline;
   padding: 2px 0;
-  width: 290px;
+  width: 100%;
 }
 
 .comment-card span:nth-child(1) {
@@ -513,7 +534,7 @@ body {
   color: #555;
   margin-right: 8px;
   flex: 3;
-  word-wrap: break-word;
+  word-break: break-all;
   line-height: normal;
 }
 
@@ -541,7 +562,7 @@ body {
 }
 
 .details-description {
-  margin: 40px 20px 40px 13px;
+  margin: 40px 20px 40px 0px;
   font-size: 16px;
   text-align: left;
   color: #555;
@@ -550,7 +571,6 @@ body {
 
 .details-tags {
   text-align: left;
-  padding-left: 11px;
 }
 
 .tag {
@@ -804,9 +824,8 @@ body {
 }
 
 .project-carousel-container {
-  flex: 3;
+  flex: 3.2;
   text-align: left;
-  max-width: 800px;
   overflow-x: auto;
   white-space: nowrap;
 }
@@ -1046,7 +1065,6 @@ body {
   padding: 0px 0;
   display: flex;
   flex-direction: column;
-  margin: 15% auto;
 }
 
 .person-card {
@@ -1078,6 +1096,7 @@ body {
 
 /*Home Page*/
 .home-container {
+  background-color: #fafafa;
 }
 
 .parallax {
@@ -1092,6 +1111,19 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: myParallax 1.8s ease 0s;
+}
+
+@keyframes myParallax {
+  0% {
+    transform: translateY(77px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 .parallax:before {
@@ -1109,6 +1141,23 @@ body {
   font-weight: 700;
   letter-spacing: 0.25px;
   margin-bottom: 5px;
+  color: #fafafa;
+  animation: myTitle 2.3s ease 0s 1 normal forwards;
+}
+
+@keyframes myTitle {
+  0%,
+  30% {
+    transform: translateY(20px);
+    opacity: 0;
+    color: #fafafa;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+    color: #fafafa;
+  }
 }
 
 #home-tagline {
@@ -1120,6 +1169,18 @@ body {
   padding: 10px 18px 10px 18px;
   width: 20%;
   text-transform: uppercase;
+  animation: myTagline 3s ease 0s 1 normal forwards;
+}
+
+@keyframes myTagline {
+  0%,
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .home-content {

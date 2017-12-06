@@ -191,7 +191,7 @@ class DesignForm extends React.Component {
                       id="url"
                       name="url"
                       placeholder="Enter url"
-                      type="text"
+                      type="url"
                       onChange={this.handleChange}
                       value={this.state.design.url}
                     />

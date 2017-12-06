@@ -13,8 +13,9 @@ class FollowershipButton extends React.Component {
   handleClick = e => {
     const token = localStorage.getItem("jwt");
     const viewerId = token ? jwt_decode(token)["user_id"] : null;
+    const viewerName = token ? jwt_decode(token)["user_name"] : null;
     if (e.target.value === "Follow") {
-      this.props.addFollower({ id: viewerId });
+      this.props.addFollower({ id: viewerId, name: viewerName });
       this.setState({ following: true });
       createRelationship(this.props.userId, {
         currentUserId: viewerId

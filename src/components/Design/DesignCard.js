@@ -45,9 +45,16 @@ class DesignCard extends React.Component {
       designId: this.props.designId,
       creatorId: this.props.userId
     };
-    saveDesigntoProject(this.props.userId, postData);
-    this.props.history.push("/designs");
+    saveDesigntoProject(this.props.userId, postData).then(json =>
+      this.props.history.push(`/projects/${json.project_id}`)
+    );
   };
+
+  componentDidCatch(error, info) {
+    this.props.history.push("/designs");
+    // logErrorToMyService(error, info);
+  }
+
   render() {
     const showDesign = this.props.design ? (
       <div className="design-card-main">
@@ -100,7 +107,14 @@ class DesignCard extends React.Component {
     ) : null;
     return (
       <div className="card-modal">
-        <Link to="/designs">&times;</Link>
+        <Link
+          to="/designs"
+          onClick={() => {
+            this.props.history.goBack();
+          }}
+        >
+          &times;
+        </Link>
         <div className="modal-content design">{showDesign}</div>
       </div>
     );

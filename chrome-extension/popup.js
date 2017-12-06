@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     chrome.cookies.get({ url: domain, name: name }, function(cookie) {
       token = cookie.value;
       postData["jwt"] = cookie.value;
-      const text = document.createElement("p");
-      text.innerText = `cookie ${cookie.value}`;
-      container.appendChild(text);
+      // const text = document.createElement("p");
+      // text.innerText = `cookie ${cookie.value}`;
+      // container.appendChild(text);
     });
   }
 
@@ -34,7 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
         postData["url"] = tabURL;
         postData["title"] = title.value;
         const p = document.createElement("p");
-        p.innerText = tabURL;
+        p.innerText = `Successfully sent to your homebase from outerspace`;
+        p.setAttribute("id", "paragraph");
         container.appendChild(p);
       }
     );
@@ -47,9 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const formData = document.createElement("p");
       // formData.innerText = `title:  ${postData.title}, object: ${postData},${postData.url}, ${postData
       //   .image.filename}`;
-
-      formData.innerText = `chrome:`;
-      container.appendChild(formData);
+      // formData.innerText = `chrome:`;
+      // container.appendChild(formData);
       fetch("http://localhost:3000/api/v1/designs/save", {
         method: "POST",
         headers: {

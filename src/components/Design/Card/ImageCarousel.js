@@ -32,15 +32,20 @@ export default class ImageCarousel extends React.Component {
         }}
       />
     ));
+    const showArrows = images.length > 1;
     return (
       <div className="image-carousel">
         {images}{" "}
-        <div onClick={this.handleMinusIndex} className="left-image-click">
-          <i className="material-icons">keyboard_arrow_left</i>
-        </div>
-        <div onClick={this.handleAddIndex} className="right-image-click">
-          <i className="material-icons">keyboard_arrow_right</i>
-        </div>
+        {showArrows && (
+          <div onClick={this.handleMinusIndex} className="left-image-click">
+            <i className="material-icons">keyboard_arrow_left</i>
+          </div>
+        )}
+        {showArrows && (
+          <div onClick={this.handleAddIndex} className="right-image-click">
+            <i className="material-icons">keyboard_arrow_right</i>
+          </div>
+        )}
       </div>
     );
   }

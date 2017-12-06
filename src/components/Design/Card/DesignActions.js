@@ -19,8 +19,13 @@ function DesignActions(props) {
           <span>Site Link</span>
         </a>
       </div>
+
       <div className="design-action">
-        <a href={props.design.code} target="_blank">
+        <a
+          href={props.design.code}
+          target="_blank"
+          onError={() => alert("Link not valid")}
+        >
           <i className="material-icons design-card-icons">settings</i>
           <span>Code Link</span>
         </a>
