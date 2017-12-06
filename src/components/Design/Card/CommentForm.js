@@ -17,11 +17,12 @@ class CommentForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const viewerId = jwt_decode(localStorage.getItem("jwt"))["user_id"];
     const userName = jwt_decode(localStorage.getItem("jwt"))["user_name"];
     this.props.addComment({
       content: this.state.comment,
       user_id: this.props.userId,
-      user: { name: userName },
+      user: { name: userName, id: viewerId },
       design_id: this.props.designId,
       votes: 0
     });

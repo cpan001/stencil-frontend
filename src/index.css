@@ -39,6 +39,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation: myOpacity 200ms ease-in-out 0s;
 }
 
 /* The Close Button */
@@ -48,15 +49,6 @@ body {
   font-size: 28px;
   font-weight: bold;
 }
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/*Tag Input Fix CSS*/
 
 /*Form Components*/
 
@@ -160,6 +152,7 @@ body {
   border-bottom: 1px solid #f2f2f2;
   color: #767676;
   font-size: 15px;
+  transition: border-bottom 200ms ease-in-out;
 }
 
 .dropdown-content a:hover {
@@ -257,54 +250,6 @@ body {
   padding: 10px 15px;
   z-index: 12;
   font-size: 12px;
-}
-
-/*Main Flex*/
-
-.main-container {
-  display: flex;
-  flex-direction: row;
-  padding-top: 15px;
-}
-
-.empty-container {
-  flex: 0.3;
-}
-
-.content-container {
-  flex: 3;
-}
-
-.design-browers {
-  display: flex;
-  flex-direction: column;
-}
-
-.search-form {
-  flex: 1;
-  background-color: #fff;
-  border-bottom: 1px solid #e6e6e6;
-}
-
-.searchBox {
-  width: 50%;
-  padding: 10px;
-  border: 1px solid #efefef;
-  font-size: 16px;
-  background-image: url("./images/Search.png");
-  background-position: 10px 10px;
-  background-size: 20px 20px;
-  background-repeat: no-repeat;
-  padding-left: 40px;
-  margin: 12px 0;
-  background-color: #efefef;
-  color: #555;
-  font-weight: 600;
-  border-radius: 4px;
-}
-
-.searchBox::-webkit-input-placeholder {
-  color: #a39a99;
 }
 
 /*Large Design Card*/
@@ -444,6 +389,7 @@ body {
   align-items: center;
   text-decoration: none;
   color: #999;
+  transition: color 200ms ease-in-out;
 }
 
 .design-action a:hover,
@@ -792,9 +738,10 @@ body {
 .project-card {
   display: flex;
   flex-direction: row;
-  min-height: 224px;
   padding: 10px 0;
   border-bottom: 1px solid #e3e1e1;
+  min-height: 240px;
+  align-items: center;
 }
 
 .project-card-description {
@@ -825,6 +772,7 @@ body {
 
 .project-carousel-container {
   flex: 3.2;
+  width: 10px;
   text-align: left;
   overflow-x: auto;
   white-space: nowrap;
@@ -1210,4 +1158,63 @@ p#home-description-about {
   font-weight: normal;
   letter-spacing: 0.2px;
   line-height: 1.4;
+}
+
+/*Keyframes */
+
+@keyframes myOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*Main Flex*/
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+}
+
+.empty-container {
+  flex: 0.3;
+}
+
+.content-container {
+  flex: 3;
+}
+
+.design-browers {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form {
+  flex: 1;
+  background-color: #fff;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.searchBox {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #efefef;
+  font-size: 16px;
+  background-image: url("./images/Search.png");
+  background-position: 10px 10px;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  margin: 12px 0;
+  background-color: #efefef;
+  color: #555;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.searchBox::-webkit-input-placeholder {
+  color: #a39a99;
 }

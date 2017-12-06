@@ -10,8 +10,19 @@ class ProjectList extends React.Component {
   }
   render() {
     const { params } = this.props.match;
-    const projectCards = this.props.projects
-      ? this.props.projects.map(proj => (
+    const sortedProjects = this.props.projects
+      ? this.props.projects.sort((a, b) => {
+          if (a.updated_at === b.updated_at) {
+            return 0;
+          } else if (a.updated_at > b.updated_at) {
+            return -1;
+          } else if (a.updated_at < b.updated_at) {
+            return 1;
+          }
+        })
+      : null;
+    const projectCards = sortedProjects
+      ? sortedProjects.map(proj => (
           <ProjectCardDisplay
             {...proj}
             key={proj.id}

@@ -18,13 +18,14 @@ class DesignBrowser extends React.Component {
   };
   render() {
     const regex = new RegExp(this.state.searchTerm, "i");
-
     const showDesigns = this.props.designs.filter(
       design =>
         design.title.match(regex) ||
         design.tags.some(tag => tag.text.match(regex))
     );
-    console.log("hit design browser", showDesigns);
+    const sortedDesigns = showDesigns.sort((a, b) => {
+      return b.likes.length - a.likes.length;
+    });
     return (
       <div className="design-browser">
         <SearchForm

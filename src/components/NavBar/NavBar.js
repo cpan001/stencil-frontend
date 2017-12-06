@@ -31,7 +31,12 @@ export default class NavBar extends React.Component {
             <i className="material-icons navbar-icons">person</i>
           </div>
           <div className="dropdown-content new">
-            <NavLink to={`/users/${this.props.userId}`}>My Profile</NavLink>
+            <NavLink to={`/users/${this.props.userId}/designs`}>
+              My Designs
+            </NavLink>
+            <NavLink to={`/users/${this.props.userId}/projects`}>
+              My Projects
+            </NavLink>
             <NavLink to="/logout">Log Out</NavLink>
           </div>
         </div>
