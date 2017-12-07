@@ -14,7 +14,7 @@ Stencil is a website app / chrome extension where designers and engineers can us
 
 ## Demo
 
-- add link to front end and video 
+- [Link to Site](https://stencil-app.herokuapp.com/)
 
 ## Database Model Relationship Diagram
 
