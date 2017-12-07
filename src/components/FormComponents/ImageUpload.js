@@ -4,7 +4,11 @@ import Dropzone from "react-dropzone";
 function ImageUpload(props) {
   const image = <img id="uploaded-profile-pic" src={props.imageURL} alt="" />;
 
-  const showSection = !!props.imageURL ? image : <p>Drag or Upload Photo</p>;
+  const showSection = !!props.imageURL ? (
+    image
+  ) : (
+    <p>Drag or Upload Profile Picture</p>
+  );
   console.log(!!props.imageURL, "in image");
   return (
     <div className="image-upload">

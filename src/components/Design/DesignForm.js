@@ -120,17 +120,6 @@ class DesignForm extends React.Component {
       addDesignAPI(newApiDesign, this.props.userId).then(json => {
         if (!json.errors) {
           this.props.history.push("/designs");
-          this.setState({
-            design: {
-              title: "",
-              description: "",
-              url: "",
-              code: "",
-              tags: [],
-              project: "",
-              images: []
-            }
-          });
         }
       });
     }
