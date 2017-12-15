@@ -8,7 +8,7 @@ export default class RSelect extends React.Component {
   };
 
   loadOptions = input => {
-    return fetch(`http://localhost:3000/api/v1/users/4/usersselect/${input}`, {
+    return fetch(`https://localhost:3000/api/v1/users/4/usersselect/${input}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` }
     })
       .then(response => {

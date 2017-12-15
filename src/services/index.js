@@ -45,7 +45,7 @@ export function destroy(url) {
 }
 
 //Specific action functions
-const baseURL = "http://localhost:3000/api/v1";
+const baseURL = "https://localhost:3000/api/v1";
 
 export function createComment(userId, designId, postData) {
   return post(

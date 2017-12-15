@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   button.addEventListener("click", () => {
-    getCookies("http://localhost:3001", "jwt");
+    getCookies("https://localhost:3001", "jwt");
 
     chrome.tabs.query(
       {
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //   .image.filename}`;
       // formData.innerText = `chrome:`;
       // container.appendChild(formData);
-      fetch("http://localhost:3000/api/v1/designs/save", {
+      fetch("https://localhost:3000/api/v1/designs/save", {
         method: "POST",
         headers: {
           Accept: "application/json",

@@ -1,7 +1,7 @@
 export function fetchComments(designId) {
   return dispatch => {
     dispatch({ type: "START_FETCHING_DESIGN_COMMENTS_REQUEST" });
-    return fetch(`http://localhost:3000/api/v1/designs/${designId}/comments`, {
+    return fetch(`https://localhost:3000/api/v1/designs/${designId}/comments`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` }
     })
       .then(resp => resp.json())
